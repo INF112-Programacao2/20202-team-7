@@ -1,0 +1,4 @@
+1,A,Suzana Vieira,Jose Claudio,
+2,B,Sergio Claudio,Ana Ribeiro,
+3,AB,Camila Santos,Ana Souza,
+4,O,Rodrigo Sergio,Kelly Vieira,

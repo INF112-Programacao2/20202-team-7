@@ -3,13 +3,12 @@
 
 class Banco_de_Sangue
 {
-private:
-    /* data */
 public:
-    Banco_de_Sangue(/* args */);
-    ~Banco_de_Sangue();
+    void DadosBancoSangue();
+    void QuantidadeTotal();
+    void QuantidadeTipo();
+    
+    
 };
-
-
 
 #endif
