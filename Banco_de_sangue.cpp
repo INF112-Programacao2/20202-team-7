@@ -42,7 +42,7 @@ void Banco_de_Sangue::DadosBancoSangue(){
         doa.ignore();       
       
   
-      std::cout<<std::setw(5)<<x<<std::setw(7)<<sexo_d<<std::setw(20)<<nome<<std::setw(12)<<cpf_d<<std::setw(10)<<tel_d<<std::setw(10)<<plsaude_d<<std::setw(7)<<tipo_doador<<std::setw(7)<<qtd_doada<<std::endl;
+      std::cout<<std::setw(5)<<x<<std::setw(7)<<sexo_d<<std::setw(20)<<nome<<std::setw(12)<<cpf_d<<std::setw(10)<<tel_d<<std::setw(10)<<plsaude_d<<std::setw(6)<<tipo_doador<<std::setw(8)<<qtd_doada<<std::endl;
       doa.ignore();
    }
    std::cout <<std::endl;
@@ -82,7 +82,7 @@ void Banco_de_Sangue::DadosBancoSangue(){
 
         
   
-      std::cout<<std::setw(5)<<y<<std::setw(7)<<sexo_r<<std::setw(20)<<_nome<<std::setw(12)<<cpf_r<<std::setw(10)<<tel_r<<std::setw(10)<<plsaude_r<<std::setw(7)<<tipo_recptor<<std::setw(7)<<qtd_recebida<<std::endl;
+      std::cout<<std::setw(5)<<y<<std::setw(7)<<sexo_r<<std::setw(20)<<_nome<<std::setw(12)<<cpf_r<<std::setw(10)<<tel_r<<std::setw(10)<<plsaude_r<<std::setw(6)<<tipo_recptor<<std::setw(8)<<qtd_recebida<<std::endl;
       rec.ignore();
    }
     std::cout<<std::endl;
