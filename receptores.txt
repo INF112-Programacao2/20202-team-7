@@ -1,4 +1,4 @@
-1,AB,Camila Silva,
-2,AB,Silvio Santos,
-3,B,Cleiton Rodrigo,
-4,O,Ana Castro,
+1,F,Suzana Vieira,123456789,98989076,UNIMED,A,400,
+2,M,Sergio Claudio,123456789,98989076,UNIMED,A,400,
+3,F,Camila Santos,123456789,98989076,UNIMED,A,400,
+4,M,Rodrigo Sergio,123456789,98989076,UNIMED,A,400,

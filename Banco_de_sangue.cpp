@@ -6,9 +6,9 @@
 
 void Banco_de_Sangue::DadosBancoSangue(){
 
-    std::string nome,tipo_recptor,tipo_doador,sobrenome,_nome,_sobrenome,discart,cpf,tel,plsaude;
+    std::string sexo_d,nome,tipo_recptor,tipo_doador,cpf_d,tel_d,plsaude_d,sexo_r,_nome,cpf_r,tel_r,plsaude_r;
     std::ifstream doa, rec;
-    int x,y, qtd_doada;
+    int x,y, qtd_doada, qtd_recebida;
 
     doa.open("doadores.txt");
 
@@ -17,35 +17,32 @@ void Banco_de_Sangue::DadosBancoSangue(){
         std::cout <<"Arquivo inexistente."<<std::endl; 
         exit(1);
     }
-    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(15)<<"QUANTIDADE/mL:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"DOADORES:"<<std::endl;
+    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(6)<<"SEXO:"<<std::setw(14)<<"DOADORES:"<<std::setw(12)<<"CPF:"<<std::setw(16)<<"TELEFONE:"<<std::setw(12)<<"CONVENIO:"<<std::setw(6)<<"TIPO:"<<std::setw(16)<<"QUANTIDADE/mL:"<<std::endl;
 
    while(!doa.eof()){
 
        doa>>x;
        doa.ignore();
 
+        std::getline(doa,sexo_d, ',');
+        
+        std::getline(doa, nome, ',');
+
+        
+        std::getline(doa, cpf_d, ',');    
+
+       std::getline(doa, tel_d, ',');
+
+       std::getline(doa, plsaude_d, ',');
+
+        std::getline(doa, tipo_doador, ',');
+  
 
         doa>>qtd_doada;
-        doa.ignore();
-
-       std::getline(doa, tipo_doador, ',');
-   
-   
-       doa>>nome;
-       std::getline(doa, sobrenome, ',');
-
-       doa>>cpf;
-    
-
-       std::getline(doa, tel, ',');
-
-       std::getline(doa, plsaude, ',');
-
-
-       
+        doa.ignore();       
       
   
-      std::cout<<std::setw(5)<<x<<std::setw(12)<<qtd_doada<<std::setw(13)<<tipo_doador<<std::setw(12)<<nome<<std::setw(10)<<sobrenome<<std::setw(10)<<cpf<<std::setw(10)<<tel<<std::setw(10)<<plsaude<<std::endl;
+      std::cout<<std::setw(5)<<x<<std::setw(7)<<sexo_d<<std::setw(20)<<nome<<std::setw(12)<<cpf_d<<std::setw(10)<<tel_d<<std::setw(10)<<plsaude_d<<std::setw(7)<<tipo_doador<<std::setw(7)<<qtd_doada<<std::endl;
       doa.ignore();
    }
    std::cout <<std::endl;
@@ -59,22 +56,33 @@ void Banco_de_Sangue::DadosBancoSangue(){
         std::cout <<"Arquivo inexistente."<<std::endl; 
         exit(1);
     }
-    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(17)<<"RECEPTORES:"<<std::endl;
+ std::cout <<std::setw(7)<<"Nro.:"<<std::setw(6)<<"SEXO:"<<std::setw(14)<<"DOADORES:"<<std::setw(12)<<"CPF:"<<std::setw(16)<<"TELEFONE:"<<std::setw(12)<<"CONVENIO:"<<std::setw(6)<<"TIPO:"<<std::setw(16)<<"QUANTIDADE/mL:"<<std::endl;
 
     while(!rec.eof()){
 
-       rec>>y;
-       rec.ignore();
+        rec>>y;
+        rec.ignore();
 
+        std::getline(rec,sexo_r, ',');
+        
+        std::getline(rec, _nome, ',');
 
-       std::getline(rec, tipo_recptor, ',');
-      
+        
+        std::getline(rec, cpf_r, ',');    
 
-       rec>>_nome;
-       std::getline(rec, _sobrenome, ',');
+       std::getline(rec, tel_r, ',');
+
+       std::getline(rec, plsaude_r, ',');
+
+        std::getline(rec, tipo_recptor, ',');
+  
+
+        rec>>qtd_recebida;
+        rec.ignore();
+
         
   
-      std::cout<<std::setw(5)<<y<<std::setw(10)<<tipo_recptor<<std::setw(12)<<_nome<<std::setw(10)<<_sobrenome<<std::endl;
+      std::cout<<std::setw(5)<<y<<std::setw(7)<<sexo_r<<std::setw(20)<<_nome<<std::setw(12)<<cpf_r<<std::setw(10)<<tel_r<<std::setw(10)<<plsaude_r<<std::setw(7)<<tipo_recptor<<std::setw(7)<<qtd_recebida<<std::endl;
       rec.ignore();
    }
     std::cout<<std::endl;
@@ -127,7 +135,7 @@ void Banco_de_Sangue::QuantidadeTipo(){
    if(!tip.is_open()){
        std::cout<<"Arquivo inexistente."<<std::endl; 
    }
-   std::cout <<std::setw(6)<<"QUANTIDADE:"<<std::setw(14)<<"TIPO:"<<std::endl;
+   std::cout <<std::setw(5)<<"QUANTIDADE:"<<std::setw(13)<<"TIPO:"<<std::endl;
 
     // 4 tipos de sangue
    while(i!=4){
@@ -136,7 +144,7 @@ void Banco_de_Sangue::QuantidadeTipo(){
 
         std::getline(tip, tipo, ',');
 
-         std::cout<<std::setw(5)<<qtd<<" mL"<<std::setw(15)<<tipo<<std::endl;
+         std::cout<<std::setw(3)<<qtd<<" mL"<<std::setw(15)<<tipo<<std::endl;
     i++;
    }
    std::cout<<std::endl;
