@@ -1,4 +1,4 @@
-1,A,Suzana Vieira,
-2,B,Sergio Claudio,
-3,AB,Camila Santos,
-4,O,Rodrigo Sergio,
+1,400,A,Suzana Vieira,12345678910,9897909,UNIMED,
+2,350,B,Sergio Claudio,12345678910,9897909,UNIMED,
+3,220,AB,Camila Santos,12345678910,9897909,UNIMED,
+4,100,O,Rodrigo Sergio,12345678910,9897909,UNIMED,

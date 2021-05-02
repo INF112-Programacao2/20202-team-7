@@ -6,9 +6,9 @@
 
 void Banco_de_Sangue::DadosBancoSangue(){
 
-    std::string nome,tipo_recptor,tipo_doador,sobrenome,_nome,_sobrenome;
+    std::string nome,tipo_recptor,tipo_doador,sobrenome,_nome,_sobrenome,discart,cpf,tel,plsaude;
     std::ifstream doa, rec;
-    int x,y;
+    int x,y, qtd_doada;
 
     doa.open("doadores.txt");
 
@@ -17,7 +17,7 @@ void Banco_de_Sangue::DadosBancoSangue(){
         std::cout <<"Arquivo inexistente."<<std::endl; 
         exit(1);
     }
-    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"DOADORES:"<<std::endl;
+    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(15)<<"QUANTIDADE/mL:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"DOADORES:"<<std::endl;
 
    while(!doa.eof()){
 
@@ -25,14 +25,27 @@ void Banco_de_Sangue::DadosBancoSangue(){
        doa.ignore();
 
 
+        doa>>qtd_doada;
+        doa.ignore();
+
        std::getline(doa, tipo_doador, ',');
    
    
        doa>>nome;
        std::getline(doa, sobrenome, ',');
+
+       doa>>cpf;
+    
+
+       std::getline(doa, tel, ',');
+
+       std::getline(doa, plsaude, ',');
+
+
+       
       
   
-      std::cout<<std::setw(5)<<x<<std::setw(10)<<tipo_doador<<std::setw(12)<<nome<<std::setw(10)<<sobrenome<<std::endl;
+      std::cout<<std::setw(5)<<x<<std::setw(12)<<qtd_doada<<std::setw(13)<<tipo_doador<<std::setw(12)<<nome<<std::setw(10)<<sobrenome<<std::setw(10)<<cpf<<std::setw(10)<<tel<<std::setw(10)<<plsaude<<std::endl;
       doa.ignore();
    }
    std::cout <<std::endl;
