@@ -6,9 +6,9 @@
 
 void Banco_de_Sangue::DadosBancoSangue(){
 
-    std::string nome,tipo,sobrenome,_nome,_sobrenome;
-    std::ifstream doa;
-    int y;
+    std::string nome,tipo_recptor,tipo_doador,sobrenome,_nome,_sobrenome;
+    std::ifstream doa, rec;
+    int x,y;
 
     doa.open("doadores.txt");
 
@@ -17,31 +17,53 @@ void Banco_de_Sangue::DadosBancoSangue(){
         std::cout <<"Arquivo inexistente."<<std::endl; 
         exit(1);
     }
-    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"DOADORES:"<<std::setw(25)<<"RECEPTORES:"<<std::endl;
+    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"DOADORES:"<<std::endl;
 
    while(!doa.eof()){
 
-       doa>>y;
+       doa>>x;
        doa.ignore();
 
 
-       std::getline(doa, tipo, ',');
+       std::getline(doa, tipo_doador, ',');
    
    
        doa>>nome;
        std::getline(doa, sobrenome, ',');
       
-
-       doa>>_nome;
-       std::getline(doa, _sobrenome, ',');
-        
   
-      std::cout<<std::setw(5)<<y<<std::setw(10)<<tipo<<std::setw(12)<<nome<<std::setw(10)<<sobrenome<<std::setw(12)<<_nome<<std::setw(10)<<_sobrenome<<std::endl;
+      std::cout<<std::setw(5)<<x<<std::setw(10)<<tipo_doador<<std::setw(12)<<nome<<std::setw(10)<<sobrenome<<std::endl;
       doa.ignore();
    }
-   
-   std::cout <<std::endl;
    doa.close();
+   std::cout <<std::endl;
+
+   rec.open("receptores.txt");
+
+    if(!rec.is_open()){
+        std::cout <<"Arquivo inexistente."<<std::endl; 
+        exit(1);
+    }
+    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"RECEPTORES:"<<std::endl;
+
+    while(!rec.eof()){
+
+       rec>>y;
+       rec.ignore();
+
+
+       std::getline(rec, tipo_recptor, ',');
+      
+
+       rec>>_nome;
+       std::getline(rec, _sobrenome, ',');
+        
+  
+      std::cout<<std::setw(5)<<y<<std::setw(10)<<tipo_recptor<<std::setw(12)<<_nome<<std::setw(10)<<_sobrenome<<std::endl;
+      rec.ignore();
+   }
+    rec.close();
+    std::cout<<std::endl;
   
 }
 
