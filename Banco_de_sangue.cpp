@@ -35,16 +35,18 @@ void Banco_de_Sangue::DadosBancoSangue(){
       std::cout<<std::setw(5)<<x<<std::setw(10)<<tipo_doador<<std::setw(12)<<nome<<std::setw(10)<<sobrenome<<std::endl;
       doa.ignore();
    }
-   doa.close();
    std::cout <<std::endl;
+   doa.close();
+  
 
    rec.open("receptores.txt");
-
+   
+    //exceção
     if(!rec.is_open()){
         std::cout <<"Arquivo inexistente."<<std::endl; 
         exit(1);
     }
-    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(16)<<"RECEPTORES:"<<std::endl;
+    std::cout <<std::setw(7)<<"Nro.:"<<std::setw(10)<<"TIPO:"<<std::setw(17)<<"RECEPTORES:"<<std::endl;
 
     while(!rec.eof()){
 
@@ -62,8 +64,9 @@ void Banco_de_Sangue::DadosBancoSangue(){
       std::cout<<std::setw(5)<<y<<std::setw(10)<<tipo_recptor<<std::setw(12)<<_nome<<std::setw(10)<<_sobrenome<<std::endl;
       rec.ignore();
    }
-    rec.close();
     std::cout<<std::endl;
+    rec.close();
+    
   
 }
 
