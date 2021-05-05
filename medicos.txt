@@ -1,0 +1,4 @@
+Lucas,147258,Ortopedista,10,12
+Patrick,124578,Psiquiatra,15,17
+Marcelo,124586,Pediatra,09,11
+
