@@ -17,6 +17,5 @@ Medico.o: Medico.cpp
 
 Pessoas.o: Pessoas.cpp
 	g++ -c Pessoas.cpp
-
 clean:
 	rm -rf *o make
