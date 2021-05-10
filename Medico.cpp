@@ -73,22 +73,6 @@ void Medico::alterar_medico(){
     }
 }
 
-void Medico::get_especializacao(){
-    return this->_especializacao;
-}
-
-void Medico::get_crm(){
-    return this->_crm;
-}
-
-void Medico::get_horarioentrada(){
-    return this->_horarioentrada;
-}
-
-void Medico::get_horariosaida(){
-    return this->_horariosaida;
-}
-
 Medico::~Medico(){
 
 }
