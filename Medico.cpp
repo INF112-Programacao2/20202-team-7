@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>
-#include "medico.h"
+#include "Medico.h"
 #include <iomanip>
+#include <string>
 
 Medico::Medico(std::string nome, char genero, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida):
-    Pessoas(nome), Pessoa(genero), Pessoas(cpf), Pessoas(telefone), _especializacao(especializacao), _crm(crm), _horarioentrada(horarioentrada), _horariosaida(horariosaida){}
+    Pessoas(nome, genero, cpf, telefone), _especializacao(especializacao), _crm(crm), _horarioentrada(horarioentrada), _horariosaida(horariosaida){}
 
 void Medico::registrar_medico(){
     std::string _nome;
@@ -72,7 +73,22 @@ void Medico::alterar_medico(){
     }
 }
 
-
-void Medico::exibirDados(){
+void Medico::get_especializacao(){
+    return this->_especializacao;
 }
 
+void Medico::get_crm(){
+    return this->_crm;
+}
+
+void Medico::get_horarioentrada(){
+    return this->_horarioentrada;
+}
+
+void Medico::get_horariosaida(){
+    return this->_horariosaida;
+}
+
+Medico::~Medico(){
+
+}
