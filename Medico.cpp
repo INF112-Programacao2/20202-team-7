@@ -23,7 +23,7 @@ void Medico::registrar_medico(){
         std::cerr <<  "File not found." << std::endl;
         exit(1);
     }
-    std::cout << "-------------------------------ADICIONAR MEDICO--------------------" << std::endl;
+    std::cout << "-------------------------------ADICIONAR MEDICO-------------------------------" << std::endl;
     std::cout << "NOME: \n" << "CRM: \n" << "ESPECIALIZACAO: \n" << "HORARIO ENTRADA: \n"  << "HORARIO SAIDA: \n" << std::endl;
     std::cin >> _nome >> _crm >> _especializacao >>_horarioentrada >>_horariosaida;
     med << _nome <<  _crm << _especializacao  << _horarioentrada << _horariosaida;
@@ -33,7 +33,7 @@ void Medico::registrar_medico(){
 }
 
 void Medico::alterar_medico(){
-    std::cout << "-------------------------------ALTERAR REGISTRO MEDICO--------------------" << std::endl;
+    std::cout << "-------------------------------ALTERAR REGISTRO MEDICO-------------------------------" << std::endl;
     std::cout << "Selecione a operação administrativa que deseja fazer: \n";
     std::cout <<  "1 - Mudar horário de um médico. \n";
     std::cout <<  "2 - Remover medico da equipe. \n";   
