@@ -13,10 +13,6 @@ class Medico: public Pessoas{
 
     
     public:
-    virtual std::string get_nome() override;
-    virtual std::string get_cpf() override;
-    virtual std::string get_telefone() override;
-    virtual char get_genero() override;
     virtual void exibirDados() override;
     void registrar_medico();
     void alterar_medico();
