@@ -11,12 +11,12 @@ class Pessoas{
         char *_genero;
 
     public:
-        Pessoas(std::string nome, char genero, std::string cpf, std::string telefone);
+        Pessoas(std::string *nome, char *genero, std::string *cpf, std::string *telefone);
         void exibirDados() = 0;
-        std::string get_nome();
-        std::string get_cpf();
-        std::string get_telefone();
-        char get_genero();
+        std::string get_nome(int n);
+        std::string get_cpf(int n);
+        std::string get_telefone(int n);
+        char get_genero(int n);
         ~Pessoas();
 };
 
