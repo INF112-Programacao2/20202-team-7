@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Banco_de_Sangue.h"
+#include "Medico.h"
 
 int main(){
 
