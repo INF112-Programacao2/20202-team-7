@@ -14,7 +14,8 @@ public:
     Paciente(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude);
     void Exibir_Dados();
     void Marcar_Consulta();
-    void Cancelar_Consulta();  
+    void Cancelar_Consulta();
+    std::string get_planosaude();  
     ~Paciente();
 };
 
