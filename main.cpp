@@ -14,6 +14,7 @@ void Secretaria()
     std::cout << "\t\tDIGITE 5 : Informacao dos pacientes agendados" << std::endl;
 
     //implementar as condicionais
+    
 }
 
 void Administracao()
@@ -36,17 +37,22 @@ void Administracao()
         std::cin >> ans;
     }
     //implementar condicionais para as outras classes
-    if (ans == 3)
-    {
+    try{
+        if (ans == 3)
+        {
 
-        Banco_de_Sangue banco;
-        banco.QuantidadeTipo();
-        banco.QuantidadeTotal();
+            Banco_de_Sangue banco;
+            banco.QuantidadeTipo();
+            banco.QuantidadeTotal();
+        }
+        else if (ans == 4)
+        {
+            Banco_de_Sangue banco;
+            banco.DadosBancoSangue();
+        }
     }
-    else if (ans == 4)
-    {
-        Banco_de_Sangue banco;
-        banco.DadosBancoSangue();
+    catch (const char *e){
+        std::cout << "erro: " << e << std::endl;
     }
 }
 bool Senha(std::string *_senha)

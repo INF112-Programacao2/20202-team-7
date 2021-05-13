@@ -13,11 +13,10 @@ void Banco_de_Sangue::DadosBancoSangue()
 
     doa.open("doadores.txt");
 
-    // exceção
     if (!doa.is_open())
     {
-        std::cout << "Arquivo inexistente." << std::endl;
-        exit(1);
+        throw "Arquivo inexistente.";
+
     }
     std::cout << "\t\t" << std::right << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 
@@ -46,11 +45,11 @@ void Banco_de_Sangue::DadosBancoSangue()
 
     rec.open("receptores.txt");
 
-    //exceção
+  
     if (!rec.is_open())
     {
-        std::cout << "Arquivo inexistente." << std::endl;
-        exit(1);
+        throw "Arquivo inexistente.";
+        
     }
 
     std::cout << "\t\t" << std::right << "SEXO:" << std::setw(13) << "RECEPTORES:" << std::setw(13) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
@@ -87,11 +86,11 @@ void Banco_de_Sangue::QuantidadeTotal()
     int i = 0, qtd_sangue, qtd_total[i], qtd_final = 0;
     tip.open("tipagem.txt");
 
-    // exceção
+  
     if (!tip.is_open())
     {
-        std::cout << "Arquivo inexistente." << std::endl;
-        exit(1);
+        throw "Arquivo inexistente.";
+   
     }
 
     while (!tip.eof())
@@ -122,10 +121,10 @@ void Banco_de_Sangue::QuantidadeTipo()
     int i = 0, qtd;
     tip.open("tipagem.txt");
 
-    // exceção
+  
     if (!tip.is_open())
     {
-        std::cout << "Arquivo inexistente." << std::endl;
+        throw "Arquivo inexistente.";
     }
     std::cout << std::right << "\t\tQUANTIDADE/mL:" << std::setw(10) << "TIPO:" << std::endl;
 
