@@ -8,7 +8,7 @@
 #include <cstring>
 
 Paciente::Paciente(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude):
-    Pessoas(nome, genero, cpf, telefone, planosaude){}
+    Pessoas(nome, genero, cpf, telefone),_planosaude(planosaude){}
 
 void Paciente::Marcar_Consulta(){
     std::string _nome;
