@@ -19,7 +19,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         std::cout << "Arquivo inexistente." << std::endl;
         exit(1);
     }
-    std::cout << std::right << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 
     while (!doa.eof())
     {
@@ -38,7 +38,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         doa >> qtd_doada;
         doa.ignore();
 
-        std::cout << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(12) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
+        std::cout << "\t\t" << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(12) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
         doa.ignore();
     }
     std::cout << std::endl;
@@ -53,7 +53,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         exit(1);
     }
 
-    std::cout << std::right << "SEXO:" << std::setw(13) << "RECEPTORES:" << std::setw(13) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(13) << "RECEPTORES:" << std::setw(13) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 
     while (!rec.eof())
     {
@@ -72,7 +72,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         rec >> qtd_recebida;
         rec.ignore();
 
-        std::cout << std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
+        std::cout << "\t\t"<< std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
         rec.ignore();
     }
     std::cout << std::endl;
@@ -108,7 +108,7 @@ void Banco_de_Sangue::QuantidadeTotal()
     {
         qtd_final += qtd_total[j];
     }
-    std::cout << std::setw(6) << "QUANTIDADE TOTAL DE SANGUE: " << qtd_final << " mL" << std::endl;
+    std::cout <<"\t\tQUANTIDADE TOTAL DE SANGUE: " << qtd_final << " mL" << std::endl;
     std::cout << std::endl;
 
     tip.close();
@@ -127,7 +127,7 @@ void Banco_de_Sangue::QuantidadeTipo()
     {
         std::cout << "Arquivo inexistente." << std::endl;
     }
-    std::cout << std::right << "QUANTIDADE/mL:" << std::setw(10) << "TIPO:" << std::endl;
+    std::cout << std::right << "\t\tQUANTIDADE/mL:" << std::setw(10) << "TIPO:" << std::endl;
 
     // 4 tipos de sangue
     while (i != 4)
@@ -137,7 +137,7 @@ void Banco_de_Sangue::QuantidadeTipo()
 
         std::getline(tip, tipo, ',');
 
-        std::cout << std::left << std::setw(19) << qtd << tipo << std::endl;
+        std::cout << "\t\t" << std::left << std::setw(19) << qtd << tipo << std::endl;
         i++;
     }
     std::cout << std::endl;
