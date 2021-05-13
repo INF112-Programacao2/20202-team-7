@@ -10,11 +10,12 @@ void Secretaria()
     std::cout << "\t\tDIGITE 1 : Horario de atendimento dos medicos" << std::endl;
     std::cout << "\t\tDIGITE 2 : Agendar consulta" << std::endl;
     std::cout << "\t\tDIGITE 3 : Cancelar consulta" << std::endl;
-    std::cout << "\t\tDIGITE 4 : Agendar doacao de sangue" << std::endl;
-    std::cout << "\t\tDIGITE 5 : Informacao dos pacientes agendados" << std::endl;
+    std::cout << "\t\tDIGITE 4 : Doar sangue" << std::endl;
+    std::cout << "\t\tDIGITE 5 : Receber sangue" << std::endl;
+    std::cout << "\t\tDIGITE 6 : Informacao dos pacientes agendados" << std::endl;
 
     //implementar as condicionais
-    
+
 }
 
 void Administracao()
