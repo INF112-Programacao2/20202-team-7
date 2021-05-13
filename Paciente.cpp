@@ -10,6 +10,10 @@
 Paciente::Paciente(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude):
     Pessoas(nome, genero, cpf, telefone),_planosaude(planosaude){}
 
+std::string Paciente::get_planosaude(){
+    return this->_planosaude;
+}
+
 void Paciente::Marcar_Consulta(){
     std::string _nome;
     std::string _genero;
@@ -71,5 +75,7 @@ void Paciente::Cancelar_Consulta(){
 
 
 }
+
+
 
 
