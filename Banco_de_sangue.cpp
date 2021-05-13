@@ -13,6 +13,7 @@ void Banco_de_Sangue::DadosBancoSangue()
 
     doa.open("doadores.txt");
 
+   
     if (!doa.is_open())
     {
         throw "Arquivo inexistente.";
@@ -126,7 +127,7 @@ void Banco_de_Sangue::QuantidadeTipo()
     {
         throw "Arquivo inexistente.";
     }
-    std::cout << std::right << "\t\tQUANTIDADE/mL:" << std::setw(10) << "TIPO:" << std::endl;
+    std::cout << "\t\t" << std::right << "QUANTIDADE/mL:" << std::setw(10) << "TIPO:" << std::endl;
 
     // 4 tipos de sangue
     while (i != 4)
