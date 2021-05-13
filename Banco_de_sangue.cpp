@@ -9,7 +9,7 @@ void Banco_de_Sangue::DadosBancoSangue()
 
     std::string sexo_d, nome, tipo_recptor, tipo_doador, cpf_d, tel_d, plsaude_d, sexo_r, _nome, cpf_r, tel_r, plsaude_r;
     std::ifstream doa, rec;
-    int x, y, qtd_doada, qtd_recebida;
+    int qtd_doada, qtd_recebida;
 
     doa.open("doadores.txt");
 
@@ -19,14 +19,10 @@ void Banco_de_Sangue::DadosBancoSangue()
         std::cout << "Arquivo inexistente." << std::endl;
         exit(1);
     }
-    std::cout << std::right << "Nro.:" << std::setw(7) << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
+    std::cout << std::right << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 
     while (!doa.eof())
     {
-
-        doa >> x;
-        doa.ignore();
-
         std::getline(doa, sexo_d, ',');
 
         std::getline(doa, nome, ',');
@@ -42,7 +38,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         doa >> qtd_doada;
         doa.ignore();
 
-        std::cout << std::left << std::setw(7) << x << std::setw(7) << sexo_d << std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(12) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
+        std::cout << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(12) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
         doa.ignore();
     }
     std::cout << std::endl;
@@ -57,14 +53,10 @@ void Banco_de_Sangue::DadosBancoSangue()
         exit(1);
     }
 
-    std::cout << std::right << "Nro.:" << std::setw(7) << "SEXO:" << std::setw(13) << "RECEPTORES:" << std::setw(13) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
+    std::cout << std::right << "SEXO:" << std::setw(13) << "RECEPTORES:" << std::setw(13) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 
     while (!rec.eof())
     {
-
-        rec >> y;
-        rec.ignore();
-
         std::getline(rec, sexo_r, ',');
 
         std::getline(rec, _nome, ',');
@@ -80,7 +72,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         rec >> qtd_recebida;
         rec.ignore();
 
-        std::cout << std::left << std::setw(7) << y << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
+        std::cout << std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
         rec.ignore();
     }
     std::cout << std::endl;

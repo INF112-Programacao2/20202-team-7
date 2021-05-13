@@ -5,9 +5,16 @@
 class Paciente : public Pessoas
 {
 private:
-    /* data */
+    std::string _nome;
+    std::string _cpf;
+    std::string _telefone;
+    std::string _planosaude;
+    
 public:
-    Paciente(/* args */);
+    Paciente(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude);
+    void Exibir_Dados();
+    void Marcar_Consulta();
+    void Cancelar_Consulta();  
     ~Paciente();
 };
 
