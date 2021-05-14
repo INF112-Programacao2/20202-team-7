@@ -7,8 +7,8 @@
 #include<vector>
 
 
-Doador_Receptor::Doador_Receptor(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude,std::string tipo_sanguineo,int quantidade_de_sangue):
-   Paciente(nome,genero,cpf,telefone,planosaude), _tipo_sanguineo(tipo_sanguineo), _quantidade_de_sangue(quantidade_de_sangue) {}
+Doador_Receptor::Doador_Receptor(char genero, std::string nome, std::string cpf, std::string telefone, std::string planosaude,std::string tipo_sanguineo,int quantidade_de_sangue):
+   Paciente(genero, nome, cpf, telefone, planosaude), _tipo_sanguineo(tipo_sanguineo), _quantidade_de_sangue(quantidade_de_sangue) {}
 
 void Doador_Receptor::Adicionar_sangue(){
 

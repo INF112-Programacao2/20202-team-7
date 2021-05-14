@@ -1,9 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include "Banco_de_Sangue.h"
+#include "Pessoas.h"
+#include "Paciente.h"
 
 void Secretaria()
 {
+
+    char genero;
+    std::string nome, sobrenome, cpf, tel, pl_saude;
     int ans;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
@@ -13,8 +18,51 @@ void Secretaria()
     std::cout << "\t\tDIGITE 4 : Doar sangue" << std::endl;
     std::cout << "\t\tDIGITE 5 : Receber sangue" << std::endl;
     std::cout << "\t\tDIGITE 6 : Informacao dos pacientes agendados" << std::endl;
-
+    std::cout << "\t\t";
+    std::cin >> ans;
     //implementar as condicionais
+    try{
+        if(ans == 2){
+            std::cout << "\t\tInsira os dados do paciente" << std::endl;
+            std::cout << "\t\tSexo: ";
+            std::cin >> genero;
+            std::cin.ignore();
+            std::cout << "\t\tNome: ";
+            std::getline(std::cin, nome);
+            std::cout << "\t\tCpf: ";
+            std::cin >> cpf;
+            std::cout << "\t\tTelefone: ";
+            std::cin >> tel;
+            std::cout << "\t\tConvenio: ";
+            std::cin >> pl_saude;
+
+            Paciente *_paciente = new Paciente(genero, nome, cpf, tel, pl_saude);
+            _paciente->Marcar_Consulta();
+
+            delete _paciente;
+        }
+        else if (ans == 3){
+
+            std::cout << "\t\tInsira os dados do paciente que voce deseja excluir a consulta:" << std::endl;
+            std::cout << "\t\tSexo: ";
+            std::cin >> genero;
+            std::cin.ignore();
+            std::cout << "\t\tNome: ";
+            std::getline(std::cin, nome);
+            std::cout << "\t\tCpf: ";
+            std::cin >> cpf;
+            std::cout << "\t\tTelefone: ";
+            std::cin >> tel;
+
+            Paciente *_paciente = new Paciente(genero, nome, cpf, tel);  
+            _paciente->Cancelar_Consulta();
+
+            delete _paciente;
+        }
+    }
+    catch(const char *e){
+        std::cout << "erro: " << e << std::endl;
+    }
 
 }
 
@@ -122,6 +170,8 @@ int main()
     {
         exit(1);
     }
+
+    
 
     return 0;
 }

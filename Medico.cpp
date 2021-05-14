@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <string>
 
-Medico::Medico(std::string nome, char genero, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida):
-    Pessoas(nome, genero, cpf, telefone), _especializacao(especializacao), _crm(crm), _horarioentrada(horarioentrada), _horariosaida(horariosaida){}
+Medico::Medico(char genero, std::string nome, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida):
+    Pessoas(genero, nome, cpf, telefone), _especializacao(especializacao), _crm(crm), _horarioentrada(horarioentrada), _horariosaida(horariosaida){}
 
 void Medico::registrar_medico(){
     std::string _nome;
@@ -73,6 +73,3 @@ void Medico::alterar_medico(){
     }
 }
 
-Medico::~Medico(){
-
-}

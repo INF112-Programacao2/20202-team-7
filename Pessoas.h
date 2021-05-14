@@ -11,13 +11,13 @@ class Pessoas{
         char _genero;
 
     public:
-        Pessoas(std::string nome, char genero, std::string cpf, std::string telefone);
+        Pessoas(char genero, std::string nome, std::string cpf, std::string telefone);
         virtual void exibirDados() = 0;
         std::string get_nome();
         std::string get_cpf();
         std::string get_telefone();
         char get_genero();
-        ~Pessoas();
+        
 };
 
 #endif

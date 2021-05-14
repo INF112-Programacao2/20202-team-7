@@ -1,80 +1,87 @@
 #include <iostream>
 #include <fstream>
-#include "Pessoas.h"
-#include "Paciente.h"
-#include "Medico.h"
 #include <iomanip>
 #include <string>
 #include <cstring>
+#include<sstream>
+#include "Pessoas.h"
+#include "Paciente.h"
 
-Paciente::Paciente(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude):
-    Pessoas(nome, genero, cpf, telefone),_planosaude(planosaude){}
+
+Paciente::Paciente(char genero, std::string nome, std::string cpf, std::string telefone, std::string planosaude):
+    Pessoas(genero, nome, cpf, telefone),_planosaude(planosaude){}
+
+
+Paciente::Paciente(char genero, std::string nome, std::string cpf, std::string telefone):
+    Pessoas(genero, nome, cpf, telefone) {}
+
 
 std::string Paciente::get_planosaude(){
     return this->_planosaude;
 }
 
+void Paciente::exibirDados(){
+    
+    std::ifstream pac;
+    std::string genero, nome, sobrenome, cpf, tel, pl_saude;
+
+    if(!pac.is_open()){
+        throw "Arquivo inexistente.";
+    }
+
+    while(!pac.eof()){
+
+        std::getline(pac, genero, ',');
+
+        std::getline(pac, nome, ',');
+
+        std::getline(pac, cpf, ',');
+
+        std::getline(pac, tel, ',');
+
+        std::getline(pac, pl_saude, ',');
+
+    
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(11) << "NOME:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::endl;
+    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(12) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::setw(9) << std::endl;
+    pac.ignore();
+
+    }
+
+    pac.close();
+
+}
+
 void Paciente::Marcar_Consulta(){
-    std::string _nome;
-    std::string _genero;
-    std::string _cpf;
-    std::string _telefone;
-    int count = 0;
     
     std::ofstream pac;
     
     pac.open("paciente.txt", std::ios::app);    
     
     if(!pac.is_open()){
-        std::cerr <<  "File not found." << std::endl;
-        exit(1);
+       throw "Arquivo inexistente.";
     }
-    std::cout << "-------------------------------AGENDAR CONSULTA-------------------------------" << std::endl;
-    std::cout << "NOME: \n" << "GENERO: \n" << "ESPECIALIZACAO: \n" << "HORARIO ENTRADA: \n"  << "HORARIO SAIDA: \n" << std::endl;
-    std::cin >> _nome >> _genero >> _cpf >>_telefone;
-    pac << _nome <<  _genero << _cpf  << _telefone;           
-    
+   
+    pac << get_genero() << "," << get_nome() << "," << get_cpf()  << "," << get_telefone() << "," << get_planosaude() << "," << std::endl;  
+   
     pac.close();
 }
 
 void Paciente::Cancelar_Consulta(){
-    std::cout << "-------------------------------ALTERAR REGISTRO MEDICO-------------------------------" << std::endl;
-    std::cout << "Selecione a operação administrativa que deseja fazer: \n";
-    std::cout <<  "1 - Mudar horário de um médico. \n";
-    std::cout <<  "2 - Remover medico da equipe. \n";   
-    
-    std::string _nome;
-    std::string _especializacao;
-    std::string _crm;
-    std::string _horarioentrada;
-    std::string _horariosaida;
-    int resposta = 0;
-    int x;
-    
-    std::cin >> resposta;
-    if(resposta = 1){
-        std::ifstream med;
-         
-        if(!med.is_open()){
-        std::cout << "Arquivo inexistente." <<std::endl; 
-        exit(1);
-        
-        std::cout  << std::setw(7) << "Nome: " << std::setw(6) << "CRM: " << std::setw(6) << "Especializacao: " << std::setw(9) << "Horario entrada:" << std::setw(3) << "Horario saida: " << std::setw(3) << std::endl;
-        //while(!med.eof()){
-            med >> x;
-            med.ignore();
-            std::getline(med, _nome,',');
-            std::getline(med, _crm,',');
-            std::getline(med, _especializacao,',');
-            std::getline(med, _horarioentrada, ',');
-            std::getline(med, _horariosaida, ',');
-            med.ignore();
-            std::cout  << std::setw(7) << x << std::setw(7) << _nome  << std::setw(6) << _crm << std::setw(6) << _especializacao << std::setw(9) << _horarioentrada << std::setw(3) << _horariosaida << std::setw(3) << std::endl;
 
-        }
+    std::string temp;
+    std::ifstream pac;
+    pac.open("paciente.txt", std::fstream::in);
 
+    std::stringstream sstr;
+    std::cin.ignore();
+
+  
+    pac.close();
 
 }
+
+
 
 
 

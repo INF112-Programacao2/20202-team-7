@@ -10,7 +10,7 @@ private:
     std::string _tipo_sanguineo;
     int _quantidade_de_sangue;
 public:
-    Doador_Receptor(std::string nome, char genero, std::string cpf, std::string telefone, std::string planosaude,std::string tipo_sanguineo,int quantidade_de_sangue);
+    Doador_Receptor(char genero, std::string nome, std::string cpf, std::string telefone, std::string planosaude,std::string tipo_sanguineo,int quantidade_de_sangue);
     ~Doador_Receptor();
     std::string get_tipo_sanguineo();
     int get_quantidade_de_sangue();

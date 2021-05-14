@@ -2,8 +2,8 @@
 #include <string>
 
 
-Pessoas::Pessoas(std::string nome, char genero, std::string cpf, std::string telefone):
-    _nome(nome), _genero (genero), _cpf (cpf), _telefone(telefone) {}
+Pessoas::Pessoas(char genero, std::string nome, std::string cpf, std::string telefone):
+    _genero (genero), _nome(nome), _cpf (cpf), _telefone(telefone) {}
 
 
 std::string Pessoas::get_nome(){

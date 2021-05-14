@@ -22,7 +22,7 @@ class Medico: public Pessoas{
     void get_horariosaida();
 
    
-    Medico(std::string nome, char genero, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida);
+    Medico(char genero, std::string nome, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida);
     ~Medico();
 
 
