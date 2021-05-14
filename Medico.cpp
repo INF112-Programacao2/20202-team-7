@@ -7,6 +7,10 @@
 Medico::Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int horario_entrada, int horario_saida):
     Pessoas(genero, nome, cpf, telefone), _crm(crm), _especializacao(especializacao), hora_entrada(horario_entrada), hora_saida(horario_saida){}
 
+std::string Medico::getnome_med() const{
+    return this->nome_med;
+}
+
 std::string Medico::get_crm() const{
     return this->_crm;
 }
@@ -21,6 +25,39 @@ int Medico::get_horarioentrada(){
 
 int Medico::get_horariosaida(){
     return this->hora_saida;
+}
+
+void Medico::horario_atendimento(){
+
+    std::ifstream hor;
+    std::string nome, especializacao;
+    int hora_entrada, hora_saida;
+
+    hor.open("horario.txt");
+
+    if(!hor.is_open()){
+        throw "Arquivo inexistente.";
+    }
+
+    while(!hor.eof()){
+
+        std::getline(hor, nome, ',');
+
+        std::getline(hor, especializacao, ',');
+
+        hor >> hora_entrada;
+        hor.ignore();
+
+        hor >> hora_saida;
+        hor.ignore();
+
+    
+    std::cout << "\t\t" << std::right << "NOME:" << std::setw(15) << "ESPECIALIZACAO:" << std::setw(17) << "HORARIOS:" << std::endl;
+    std::cout << "\t\t" << std::left << std::setw(7) << nome <<std::setw(12) << especializacao << std::setw(12) << hora_entrada << "-" << hora_saida << std::endl;
+
+    hor.ignore();
+    }   
+    hor.close();
 }
 
 void Medico::exibirDados(){
@@ -77,6 +114,10 @@ void Medico::registrar_medico(){
 
     med << get_genero() << "," << get_nome() << "," << get_cpf() << ", " << get_crm() << "," << get_telefone() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
     med.close();
+
+}
+
+void Medico::alterar_medico(){
 
 }
 

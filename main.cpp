@@ -4,13 +4,14 @@
 #include "Pessoas.h"
 #include "Paciente.h"
 #include "Medico.h"
+#include "Doador_Receptor.h"
 
 void Secretaria()
 {
 
     char genero;
-    std::string nome, cpf, tel, pl_saude;
-    int ans;
+    std::string nome, cpf, tel, pl_saude, tipo_sangue;
+    int ans, qtd_sangue;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
     std::cout << "\t\tDIGITE 1 : Horario de atendimento dos medicos" << std::endl;
@@ -23,7 +24,11 @@ void Secretaria()
     std::cin >> ans;
     
     try{
+        if(ans == 1){
+            //exibir horario de atendimento
+        }
         if(ans == 2){
+            
             std::cout << "\t\tInsira os dados do paciente" << std::endl;
             std::cout << "\t\tSexo: ";
             std::cin >> genero;
@@ -60,6 +65,54 @@ void Secretaria()
 
             delete _paciente;
         }
+        else if(ans == 4){
+
+            std::cout << "\t\tInsira os dados do doador" << std::endl;
+            std::cout << "\t\tSexo: ";
+            std::cin >> genero;
+            std::cin.ignore();
+            std::cout << "\t\tNome: ";
+            std::getline(std::cin, nome);
+            std::cout << "\t\tCpf: ";
+            std::cin >> cpf;
+            std::cout << "\t\tTelefone: ";
+            std::cin >> tel;
+            std::cout << "\t\tConvenio: ";
+            std::cin >> pl_saude;
+            std::cout << "\t\tTipo sanguineo: ";
+            std::cin >> tipo_sangue;
+            std::cout << "\t\tQuantidade de sangue doada: ";
+            std::cin >> qtd_sangue; 
+
+            Doador_Receptor *doador = new Doador_Receptor(genero, nome, cpf, tel, pl_saude, tipo_sangue, qtd_sangue);
+            doador->Adicionar_sangue();
+
+            delete doador;
+        }
+        else if(ans == 5){
+
+            std::cout << "\t\tInsira os dados do receptor" << std::endl;
+            std::cout << "\t\tSexo: ";
+            std::cin >> genero;
+            std::cin.ignore();
+            std::cout << "\t\tNome: ";
+            std::getline(std::cin, nome);
+            std::cout << "\t\tCpf: ";
+            std::cin >> cpf;
+            std::cout << "\t\tTelefone: ";
+            std::cin >> tel;
+            std::cout << "\t\tConvenio: ";
+            std::cin >> pl_saude;
+            std::cout << "\t\tTipo sanguineo: ";
+            std::cin >> tipo_sangue;
+            std::cout << "\t\tQuantidade de sangue para ser recebida: ";
+            std::cin >> qtd_sangue; 
+
+            Doador_Receptor *receptor = new Doador_Receptor(genero, nome, cpf, tel, pl_saude, tipo_sangue, qtd_sangue);
+            receptor->Retirar_sangue();
+
+            delete receptor;
+        }
     }
     catch(const char *e){
         std::cout << "erro: " << e << std::endl;
@@ -87,7 +140,7 @@ void Administracao()
         std::cout << "\t\t";
         std::cin >> ans;
     }
-    //implementar condicionais para as outras classes
+
     try{
 
         if(ans == 1){
@@ -122,7 +175,32 @@ void Administracao()
             delete med;
         }
         else if (ans == 3){
-            //retirar med
+            
+            char genero, t;
+            std::string nome, cpf, tel, crm, especializacao;
+            int x, y;
+
+            std::cout << "\t\tInsira os dados do medico que deseja substituir" << std::endl;
+            std::cout << "\t\tSexo: ";
+            std::cin >> genero;
+            std::cin.ignore();
+            std::cout << "\t\tNome: ";
+            std::getline(std::cin, nome);
+            std::cout << "\t\tCpf: ";
+            std::cin >> cpf;
+            std::cout << "\t\tTelefone: ";
+            std::cin >> tel;
+            std::cout << "\t\tCrm: ";
+            std::cin >> crm;
+            std::cout << "\t\tEspecializacao: ";
+            std::cin >> especializacao;
+            std::cout << "\t\tHorarios de atendimento: ";
+            std::cin >> x >> t >> y;
+
+            Medico *med = new Medico(genero, nome, cpf, tel, crm, especializacao, x, y);
+            med->alterar_medico();
+
+            delete med;        
         }        
         else if (ans == 4)
         {

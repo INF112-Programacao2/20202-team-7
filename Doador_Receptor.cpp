@@ -10,6 +10,14 @@
 Doador_Receptor::Doador_Receptor(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, std::string planosaude, const std::string &tipo_sanguineo,int quantidade_de_sangue):
    Paciente(genero, nome, cpf, telefone, planosaude), _tipo_sanguineo(tipo_sanguineo), _quantidade_de_sangue(quantidade_de_sangue) {}
 
+int Doador_Receptor::get_quantidade_de_sangue(){
+    return this->_quantidade_de_sangue;
+}
+
+std::string Doador_Receptor::get_tipo_sanguineo() const{
+    return this-> _tipo_sanguineo;
+}
+
 void Doador_Receptor::Adicionar_sangue(){
 
     std::ifstream arquivo_saida;
@@ -173,11 +181,3 @@ void Doador_Receptor::Retirar_sangue(){
     arquivo_receptor.close();
 
 } 
-
-int Doador_Receptor::get_quantidade_de_sangue(){
-    return this->_quantidade_de_sangue;
-}
-
-std::string Doador_Receptor::get_tipo_sanguineo() const{
-    return this-> _tipo_sanguineo;
-}
