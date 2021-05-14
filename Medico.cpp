@@ -4,72 +4,83 @@
 #include <iomanip>
 #include <string>
 
-Medico::Medico(char genero, std::string nome, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida):
-    Pessoas(genero, nome, cpf, telefone), _especializacao(especializacao), _crm(crm), _horarioentrada(horarioentrada), _horariosaida(horariosaida){}
+Medico::Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int horario_entrada, int horario_saida):
+    Pessoas(genero, nome, cpf, telefone), _crm(crm), _especializacao(especializacao), hora_entrada(horario_entrada), hora_saida(horario_saida){}
+
+std::string Medico::get_crm() const{
+    return this->_crm;
+}
+
+std::string Medico::get_especializacao(){
+    return this->_especializacao;
+}
+
+int Medico::get_horarioentrada(){
+    return this->hora_entrada;
+}
+
+int Medico::get_horariosaida(){
+    return this->hora_saida;
+}
+
+void Medico::exibirDados(){
+    std::ifstream med;
+    std::string genero, nome, cpf, tel, crm, especializacao;
+    int hora_entrada, hora_saida;
+
+    med.open("medicos.txt");
+
+    if(!med.is_open()){
+        throw "Arquivo inexistente.";
+    }
+
+    while(!med.eof()){
+
+        std::getline(med, genero, ',');
+
+        std::getline(med, nome, ',');
+
+        std::getline(med, crm, ',');
+
+        std::getline(med, cpf, ',');
+
+        std::getline(med, tel, ',');
+
+        std::getline(med, especializacao, ',');
+
+        med >> hora_entrada;
+        med.ignore();
+
+        med >> hora_saida;
+        med.ignore();
+
+    
+    std::cout << "\t\t" << std::right << "SEXO" << std::setw(11) << "NOME:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CRM:" << std::setw(15) << "ESPECIALIZACAO:" << std::setw(17) << "HORARIOS:" << std::endl;
+    std::cout << "\t\t" << std::left << std::setw(7) << genero << std::setw(20) << nome <<std::setw(12) << cpf << std::setw(12) << tel << std::setw(12) << crm << std::setw(9) << especializacao << std::setw(12) << hora_entrada << "-" << hora_saida << std::endl;
+
+    med.ignore();
+
+    }
+
+    med.close();
+}
 
 void Medico::registrar_medico(){
-    std::string _nome;
-    std::string _especializacao;
-    std::string _crm;
-    std::string _horarioentrada;
-    std::string _horariosaida;
-    int count = 0;
-    
+   
     std::ofstream med;
     
     med.open("medicos.txt", std::ios::app);    
     
     if(!med.is_open()){
-        std::cerr <<  "File not found." << std::endl;
-        exit(1);
+       throw "Arquivo inexistente.";
     }
-    std::cout << "-------------------------------ADICIONAR MEDICO-------------------------------" << std::endl;
-    std::cout << "NOME: \n" << "CRM: \n" << "ESPECIALIZACAO: \n" << "HORARIO ENTRADA: \n"  << "HORARIO SAIDA: \n" << std::endl;
-    std::cin >> _nome >> _crm >> _especializacao >>_horarioentrada >>_horariosaida;
-    med << _nome <<  _crm << _especializacao  << _horarioentrada << _horariosaida;
-           
-    
+
+    med << get_genero() << "," << get_nome() << "," << get_cpf() << ", " << get_crm() << "," << get_telefone() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
+
     med.close();
+
 }
 
-void Medico::alterar_medico(){
-    std::cout << "-------------------------------ALTERAR REGISTRO MEDICO-------------------------------" << std::endl;
-    std::cout << "Selecione a operação administrativa que deseja fazer: \n";
-    std::cout <<  "1 - Mudar horário de um médico. \n";
-    std::cout <<  "2 - Remover medico da equipe. \n";   
-    
-    std::string _nome;
-    std::string _especializacao;
-    std::string _crm;
-    std::string _horarioentrada;
-    std::string _horariosaida;
-    int resposta = 0;
-    int x;
-    
-    std::cin >> resposta;
-    if(resposta = 1){
-        std::ifstream med;
-         
-        if(!med.is_open()){
-        std::cout << "Arquivo inexistente." <<std::endl; 
-        exit(1);
-        
-        std::cout  << std::setw(7) << "Nome: " << std::setw(6) << "CRM: " << std::setw(6) << "Especializacao: " << std::setw(9) << "Horario entrada:" << std::setw(3) << "Horario saida: " << std::setw(3) << std::endl;
-        //while(!med.eof()){
-            med >> x;
-            med.ignore();
-            std::getline(med, _nome,',');
-            std::getline(med, _crm,',');
-            std::getline(med, _especializacao,',');
-            std::getline(med, _horarioentrada, ',');
-            std::getline(med, _horariosaida, ',');
-            med.ignore();
-            std::cout  << std::setw(7) << x << std::setw(7) << _nome  << std::setw(6) << _crm << std::setw(6) << _especializacao << std::setw(9) << _horarioentrada << std::setw(3) << _horariosaida << std::setw(3) << std::endl;
 
-        }
 
-    if(resposta = 2){
-
-    }
-}
 

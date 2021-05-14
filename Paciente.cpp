@@ -8,11 +8,11 @@
 #include "Paciente.h"
 
 
-Paciente::Paciente(char genero, std::string nome, std::string cpf, std::string telefone, std::string planosaude):
+Paciente::Paciente(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, std::string planosaude):
     Pessoas(genero, nome, cpf, telefone),_planosaude(planosaude){}
 
 
-Paciente::Paciente(char genero, std::string nome, std::string cpf, std::string telefone):
+Paciente::Paciente(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone):
     Pessoas(genero, nome, cpf, telefone) {}
 
 
@@ -23,7 +23,8 @@ std::string Paciente::get_planosaude(){
 void Paciente::exibirDados(){
     
     std::ifstream pac;
-    std::string genero, nome, sobrenome, cpf, tel, pl_saude;
+    std::string genero, nome, cpf, tel, pl_saude;
+    pac.open("pacientes.txt");
 
     if(!pac.is_open()){
         throw "Arquivo inexistente.";

@@ -8,22 +8,21 @@ class Medico: public Pessoas{
     private:
     std::string _especializacao;
     std::string _crm;
-    std::string _horarioentrada;
-    std::string _horariosaida;
+    int hora_entrada, hora_saida;
 
     
     public:
     virtual void exibirDados() override;
     void registrar_medico();
     void alterar_medico();
-    void get_especializacao();
-    void get_crm();
-    void get_horarioentrada();
-    void get_horariosaida();
+    std::string get_especializacao();
+    std::string get_crm() const;
+    int get_horarioentrada();
+    int get_horariosaida();
 
    
-    Medico(char genero, std::string nome, std::string cpf, std::string telefone, std::string especializacao, std::string crm, std::string horarioentrada, std::string horariosaida);
-    ~Medico();
+    Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int hora_entrada, int hora_saida);
+    
 
 
 };

@@ -3,12 +3,13 @@
 #include "Banco_de_Sangue.h"
 #include "Pessoas.h"
 #include "Paciente.h"
+#include "Medico.h"
 
 void Secretaria()
 {
 
     char genero;
-    std::string nome, sobrenome, cpf, tel, pl_saude;
+    std::string nome, cpf, tel, pl_saude;
     int ans;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
@@ -20,7 +21,7 @@ void Secretaria()
     std::cout << "\t\tDIGITE 6 : Informacao dos pacientes agendados" << std::endl;
     std::cout << "\t\t";
     std::cin >> ans;
-    //implementar as condicionais
+    
     try{
         if(ans == 2){
             std::cout << "\t\tInsira os dados do paciente" << std::endl;
@@ -34,7 +35,7 @@ void Secretaria()
             std::cout << "\t\tTelefone: ";
             std::cin >> tel;
             std::cout << "\t\tConvenio: ";
-            std::cin >> pl_saude;
+            std::cin >> pl_saude; 
 
             Paciente *_paciente = new Paciente(genero, nome, cpf, tel, pl_saude);
             _paciente->Marcar_Consulta();
@@ -72,9 +73,10 @@ void Administracao()
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
     std::cout << "\t\tDIGITE 1 : Informacoes sobre os medicos" << std::endl;
-    std::cout << "\t\tDIGITE 2 : Alterar lista de medicos" << std::endl;
-    std::cout << "\t\tDIGITE 3 : Informacoes sobre o banco de sangue" << std::endl;
-    std::cout << "\t\tDIGITE 4 : Informacoes sobre os doadores/receptores de sangue" << std::endl;
+    std::cout << "\t\tDIGITE 2 : Registrar medico" << std::endl;
+    std::cout << "\t\tDIGITE 3 : Retirar medico" << std::endl;
+    std::cout << "\t\tDIGITE 4 : Informacoes sobre o banco de sangue" << std::endl;
+    std::cout << "\t\tDIGITE 5 : Informacoes sobre os doadores/receptores de sangue" << std::endl;
     std::cout << "\t\t";
     std::cin >> ans;
     std::cout << std::endl;
@@ -87,14 +89,49 @@ void Administracao()
     }
     //implementar condicionais para as outras classes
     try{
-        if (ans == 3)
+
+        if(ans == 1){
+            //exibirdados();
+        }
+        else if(ans == 2){
+
+            char genero;
+            std::string nome, cpf, tel, crm, especializacao;
+            int x, y;
+
+            std::cout << "\t\tInsira os dados do medico que deseja adicionar" << std::endl;
+            std::cout << "\t\tSexo: ";
+            std::cin >> genero;
+            std::cin.ignore();
+            std::cout << "\t\tNome: ";
+            std::getline(std::cin, nome);
+            std::cout << "\t\tCpf: ";
+            std::cin >> cpf;
+            std::cout << "\t\tTelefone: ";
+            std::cin >> tel;
+            std::cout << "\t\tCrm: ";
+            std::cin >> crm;
+            std::cout << "\t\tEspecializacao: ";
+            std::cin >> especializacao;
+            std::cout << "\t\tHorarios de atendimento: ";
+            std::cin >> x >> y;
+
+            Medico *med = new Medico(genero, nome, cpf, tel, crm, especializacao, x, y);
+            med->registrar_medico();
+
+            delete med;
+        }
+        else if (ans == 3){
+            //retirar med
+        }        
+        else if (ans == 4)
         {
 
             Banco_de_Sangue banco;
             banco.QuantidadeTipo();
             banco.QuantidadeTotal();
         }
-        else if (ans == 4)
+        else if (ans == 5)
         {
             Banco_de_Sangue banco;
             banco.DadosBancoSangue();
