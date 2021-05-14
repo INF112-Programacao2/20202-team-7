@@ -76,7 +76,6 @@ void Medico::registrar_medico(){
     }
 
     med << get_genero() << "," << get_nome() << "," << get_cpf() << ", " << get_crm() << "," << get_telefone() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
-
     med.close();
 
 }

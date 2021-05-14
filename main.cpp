@@ -95,7 +95,7 @@ void Administracao()
         }
         else if(ans == 2){
 
-            char genero;
+            char genero, t;
             std::string nome, cpf, tel, crm, especializacao;
             int x, y;
 
@@ -114,7 +114,7 @@ void Administracao()
             std::cout << "\t\tEspecializacao: ";
             std::cin >> especializacao;
             std::cout << "\t\tHorarios de atendimento: ";
-            std::cin >> x >> y;
+            std::cin >> x >> t >> y;
 
             Medico *med = new Medico(genero, nome, cpf, tel, crm, especializacao, x, y);
             med->registrar_medico();
