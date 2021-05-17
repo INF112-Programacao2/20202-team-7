@@ -10,8 +10,8 @@ void Secretaria()
 {
 
     char genero;
-    std::string nome, cpf, tel, pl_saude, tipo_sangue;
-    int ans, qtd_sangue;
+    std::string nome, cpf, tel, pl_saude, tipo_sangue, crm, especilizacao;
+    int ans, qtd_sangue, horario_entrada, horario_saida;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
     std::cout << "\t\tDIGITE 1 : Horario de atendimento dos medicos" << std::endl;
@@ -22,10 +22,30 @@ void Secretaria()
     std::cout << "\t\tDIGITE 6 : Informacao dos pacientes agendados" << std::endl;
     std::cout << "\t\t";
     std::cin >> ans;
+
+    
+    while (ans < 1 || ans > 5)
+    {
+        std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
+        std::cout << "\t\t";
+        std::cin >> ans;
+    }
     
     try{
         if(ans == 1){
-            //exibir horario de atendimento
+            
+            genero = 'c';
+            nome = "default";
+            cpf = "default";
+            tel = "default";
+            especilizacao = "default";
+            pl_saude = "default";
+            tipo_sangue = "default";
+            
+            Medico *med = new Medico(genero, nome, cpf, tel, crm, especilizacao, 0, 0);
+            med->horario_atendimento();
+
+            delete med;
         }
         if(ans == 2){
             
@@ -61,7 +81,7 @@ void Secretaria()
             std::cin >> tel;
 
             Paciente *_paciente = new Paciente(genero, nome, cpf, tel);  
-            _paciente->Cancelar_Consulta();
+         
 
             delete _paciente;
         }
@@ -122,6 +142,10 @@ void Secretaria()
 
 void Administracao()
 {
+
+    char genero, t;
+    std::string nome, cpf, tel, crm, especializacao;
+    int x, y;
     int ans;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
@@ -134,7 +158,7 @@ void Administracao()
     std::cin >> ans;
     std::cout << std::endl;
 
-    while (ans < 1 || ans > 4)
+    while (ans < 1 || ans > 5)
     {
         std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
         std::cout << "\t\t";
@@ -144,13 +168,21 @@ void Administracao()
     try{
 
         if(ans == 1){
-            //exibirdados();
+
+            genero = 'c';
+            nome = "default";
+            cpf = "default";
+            tel = "default";
+            crm = "default";
+            especializacao = "default";
+            x = 0, y = 0;
+
+            Medico *med = new Medico(genero, nome, cpf, tel, crm, especializacao, x, y);
+            med->exibirDados();
+
+            delete med;
         }
         else if(ans == 2){
-
-            char genero, t;
-            std::string nome, cpf, tel, crm, especializacao;
-            int x, y;
 
             std::cout << "\t\tInsira os dados do medico que deseja adicionar" << std::endl;
             std::cout << "\t\tSexo: ";
@@ -175,10 +207,6 @@ void Administracao()
             delete med;
         }
         else if (ans == 3){
-            
-            char genero, t;
-            std::string nome, cpf, tel, crm, especializacao;
-            int x, y;
 
             std::cout << "\t\tInsira os dados do medico que deseja substituir" << std::endl;
             std::cout << "\t\tSexo: ";
