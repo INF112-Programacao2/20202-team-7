@@ -102,7 +102,7 @@ void Medico::exibirDados(){
     med.close();
 }
 
-void Medico::registrar_medico(){
+void Medico::Mudar_Registro(){
    
     std::ofstream med;
     
@@ -117,9 +117,6 @@ void Medico::registrar_medico(){
 
 }
 
-void Medico::alterar_medico(){
-
-}
 
 
 

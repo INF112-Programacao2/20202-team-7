@@ -17,8 +17,7 @@ class Medico: public Pessoas{
 
     void horario_atendimento();
     virtual void exibirDados() override;
-    void registrar_medico();
-    void alterar_medico();
+    void Mudar_Registro();
     std::string getnome_med() const;
     std::string get_especializacao();
     std::string get_crm() const;
