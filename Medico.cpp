@@ -39,6 +39,7 @@ void Medico::horario_atendimento(){
         throw "Arquivo inexistente.";
     }
 
+    std::cout << "\t\t" << std::right << "NOME:" << std::setw(30) << "ESPECIALIZACAO:" << std::setw(17) << "HORARIOS:" << std::endl;
     while(!hor.eof()){
 
         std::getline(hor, nome, ',');
@@ -51,11 +52,10 @@ void Medico::horario_atendimento(){
         hor >> hora_saida;
         hor.ignore();
 
-    
-    std::cout << "\t\t" << std::right << "NOME:" << std::setw(15) << "ESPECIALIZACAO:" << std::setw(17) << "HORARIOS:" << std::endl;
-    std::cout << "\t\t" << std::left << std::setw(7) << nome <<std::setw(12) << especializacao << std::setw(12) << hora_entrada << "-" << hora_saida << std::endl;
 
+    std::cout << "\t\t" << std::left << std::setw(20) << nome <<std::setw(23) << especializacao << std::left << hora_entrada << "-" << hora_saida << std::endl;
     hor.ignore();
+
     }   
     hor.close();
 }
@@ -71,6 +71,7 @@ void Medico::exibirDados(){
         throw "Arquivo inexistente.";
     }
 
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(7) << "NOME:" << std::setw(24) << "TELEFONE:" << std::setw(7) << "CRM:" << std::setw(12) << "CPF:" << std::setw(29) << "ESPECIALIZACAO:" << std::setw(13) << "HORARIOS:" << std::endl;
     while(!med.eof()){
 
         std::getline(med, genero, ',');
@@ -92,8 +93,7 @@ void Medico::exibirDados(){
         med.ignore();
 
     
-    std::cout << "\t\t" << std::right << "SEXO" << std::setw(11) << "NOME:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CRM:" << std::setw(15) << "ESPECIALIZACAO:" << std::setw(17) << "HORARIOS:" << std::endl;
-    std::cout << "\t\t" << std::left << std::setw(7) << genero << std::setw(20) << nome <<std::setw(12) << cpf << std::setw(12) << tel << std::setw(12) << crm << std::setw(9) << especializacao << std::setw(12) << hora_entrada << "-" << hora_saida << std::endl;
+    std::cout << "\t\t" << std::left << std::setw(7) << genero << std::setw(20) << nome <<std::setw(12) << cpf << std::setw(12) << tel << std::setw(18) << crm << std::setw(19) << especializacao << hora_entrada << "-" << hora_saida << std::endl;
 
     med.ignore();
 

@@ -114,7 +114,7 @@ void Secretaria()
 
             delete receptor;
         }
-        else{
+        else {
 
             genero = 'c';
             nome = "default";
@@ -183,11 +183,11 @@ void Administracao()
             std::cin.ignore();
             std::cout << "\t\tNome: ";
             std::getline(std::cin, nome);
-            std::cout << "\t\tCpf: ";
-            std::cin >> cpf;
             std::cout << "\t\tTelefone: ";
+            std::cin >> cpf;
+            std::cout << "\t\tCRM: ";
             std::cin >> tel;
-            std::cout << "\t\tCrm: ";
+            std::cout << "\t\tCPF: ";
             std::cin >> crm;
             std::cout << "\t\tEspecializacao: ";
             std::cin >> especializacao;

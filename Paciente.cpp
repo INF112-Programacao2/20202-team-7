@@ -20,12 +20,13 @@ void Paciente::exibirDados(){
     
     std::ifstream pac;
     std::string genero, nome, cpf, tel, pl_saude;
-    pac.open("pacientes.txt");
+    pac.open("paciente.txt");
 
     if(!pac.is_open()){
         throw "Arquivo inexistente.";
     }
 
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(7) << "NOME:" << std::setw(19) << "CPF:" << std::setw(20) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::endl;
     while(!pac.eof()){
 
         std::getline(pac, genero, ',');
@@ -38,11 +39,9 @@ void Paciente::exibirDados(){
 
         std::getline(pac, pl_saude, ',');
 
-    
-    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(11) << "NOME:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::endl;
-    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(12) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::setw(9) << std::endl;
-    pac.ignore();
 
+    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::endl;
+    pac.ignore();
     }
 
     pac.close();
