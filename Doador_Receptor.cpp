@@ -101,12 +101,11 @@ void Doador_Receptor::Adicionar_sangue(){
 }    
 
 void Doador_Receptor::Retirar_sangue(){
-      std::ifstream arquivo_saida;
-
+    
+    std::ifstream arquivo_saida;
     std::ofstream arquivo_receptor;
 
     arquivo_saida.open("tipagem.txt");
-
     arquivo_receptor.open("tipagem.txt");
 
 
