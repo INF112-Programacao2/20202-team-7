@@ -80,10 +80,8 @@ void Secretaria()
             std::cout << "\t\tTelefone: ";
             std::cin >> tel;
 
-            Paciente *_paciente = new Paciente(genero, nome, cpf, tel);  
-         
-
-            delete _paciente;
+           
+        
         }
         else if(ans == 4){
 
@@ -132,6 +130,19 @@ void Secretaria()
             receptor->Retirar_sangue();
 
             delete receptor;
+        }
+        else{
+
+            genero = 'c';
+            nome = "default";
+            cpf = "default";
+            tel = "default";
+            pl_saude = "default";
+
+            Paciente *pac = new Paciente(genero, nome, cpf, tel, pl_saude);
+            pac->exibirDados();
+
+            delete pac;       
         }
     }
     catch(const char *e){
@@ -237,7 +248,7 @@ void Administracao()
             banco.QuantidadeTipo();
             banco.QuantidadeTotal();
         }
-        else if (ans == 5)
+        else
         {
             Banco_de_Sangue banco;
             banco.DadosBancoSangue();

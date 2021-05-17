@@ -10,11 +10,7 @@
 
 Paciente::Paciente(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, std::string planosaude):
     Pessoas(genero, nome, cpf, telefone),_planosaude(planosaude){}
-
-
-Paciente::Paciente(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone):
-    Pessoas(genero, nome, cpf, telefone) {}
-
+    
 
 std::string Paciente::get_planosaude(){
     return this->_planosaude;

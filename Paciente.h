@@ -11,7 +11,6 @@ public:
 
    
     Paciente(const char &genero, const std::string &_nome, const std::string &cpf, const std::string telefone, std::string planosaude);
-    Paciente(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone);
 
     void exibirDados();
     void Marcar_Consulta();
