@@ -17,18 +17,25 @@ int Doador_Receptor::get_quantidade_de_sangue(){
 std::string Doador_Receptor::get_tipo_sanguineo() const{
     return this-> _tipo_sanguineo;
 }
+/*
+    Essa função irá fazer a modificação nos arquivos referentes a quantidade de cada tipo de sangue e de registro de doadores
+    Irá pegar a quantidade de sangue que tem já registrado de cada tipo sanguíneo e irá adicionar sangue no tipo sanguíneo 
+    referente ao do doador, e também, irá fazer registro dos dados desse doador
 
+*/
 void Doador_Receptor::Adicionar_sangue(){
 
+    // arquivo que iremos pegar os dados do sangue para ser modificados
     std::ifstream arquivo_saida;
 
+    // arquivo que iremos registrar os dados já modificados do sangue
     std::ofstream arquivo_receptor;
 
     arquivo_saida.open("tipagem.txt");
 
     arquivo_receptor.open("tipagem.txt");
 
-
+    // tratamento de exceção caso o arquivo não abra
     if (!arquivo_saida.is_open())
     {
         throw "Arquivo inexistente";
@@ -43,6 +50,7 @@ void Doador_Receptor::Adicionar_sangue(){
     int contador = 0;
     std::string palavra;
 
+    // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra,virgula);
@@ -54,17 +62,20 @@ void Doador_Receptor::Adicionar_sangue(){
 
     int sangue[4];
 
+    // irá transformar a variável que armazena os valores da quantidade sangue de cada tipo sanguíneo de string para int
+    // para dessa forma, poder ser modificada com sangue que está sendo audicionado 
     for (int i = 0; i < 4; i++)
     {
         sangue[i] = std::stoi(quant_sangue[i]);
     }
 
+    // vai adicionar o sangue referente ao tipo sanguíneo
     if(get_tipo_sanguineo() == "AB") sangue[0] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "A") sangue[1] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "B") sangue[2] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "O") sangue[3] += get_quantidade_de_sangue();
    
-
+    // vai registrar no arquivo de tipagem os novos valores modificados
     arquivo_receptor << sangue[0] <<",AB,"<<std::endl;
     arquivo_receptor << sangue [1] <<",A,"<<std::endl;
     arquivo_receptor << sangue[2] <<",B,"<<std::endl;
@@ -72,15 +83,18 @@ void Doador_Receptor::Adicionar_sangue(){
  
     std::ofstream gravar_informacoes;
 
+    // abrir o arquivo de doadores para poder ser registrado novos valores 
     gravar_informacoes.open("doadores.txt",std::ios::app);
 
     if (!gravar_informacoes.is_open())
     {
         throw "Arquivo inexistente";
     }
-
+    
+    // vai gravar as informações referente ao doador no arquivo de doadores
     gravar_informacoes << get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," << std::endl;
     
+    // fechando todos os arquivos que foram abertos durante a execução do programa
     gravar_informacoes.close();
     arquivo_saida.close();
     arquivo_receptor.close();
