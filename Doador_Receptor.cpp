@@ -47,17 +47,16 @@ void Doador_Receptor::Adicionar_sangue(){
 
     std::vector<std::string> quant_sangue;
     char virgula = ',';
-    int contador = 0;
+    
     std::string palavra;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra,virgula);
-        if(contador%2 == 0){
-            quant_sangue.push_back(palavra);
-        }
-        contador++;
+        
+        quant_sangue.push_back(palavra);
+       
     }
 
     int sangue[4];
@@ -65,10 +64,12 @@ void Doador_Receptor::Adicionar_sangue(){
     std::string::size_type sz;   
     // irá transformar a variável que armazena os valores da quantidade sangue de cada tipo sanguíneo de string para int
     // para dessa forma, poder ser modificada com sangue que está sendo audicionado 
-    for (int i = 0; i < 4; i++)
-    {
-        sangue[i] = std::stoi(quant_sangue[i],&sz);
-    }
+    
+    sangue[0] = std::stoi(quant_sangue[0],&sz);
+    sangue[1] = std::stoi(quant_sangue[2],&sz);
+    sangue[2] = std::stoi(quant_sangue[4],&sz);
+    sangue[3] = std::stoi(quant_sangue[6],&sz);
+    
 
     // vai adicionar o sangue referente ao tipo sanguíneo
     if(get_tipo_sanguineo() == "AB") sangue[0] += get_quantidade_de_sangue();
@@ -124,22 +125,21 @@ void Doador_Receptor::Retirar_sangue(){
     int contador = 0;
     std::string palavra;
 
-    while (!arquivo_saida.eof())
+      while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra,virgula);
-        if(contador%2 == 0){
-            quant_sangue.push_back(palavra);
-        }
-        contador++;
+        
+        quant_sangue.push_back(palavra);
+       
     }
 
     std::string::size_type sz;
     int sangue[4];
 
-    for (int i = 0; i < 4; i++)
-    {
-        sangue[i] = std::stoi(quant_sangue[i],&sz);
-    }
+    sangue[0] = std::stoi(quant_sangue[0],&sz);
+    sangue[1] = std::stoi(quant_sangue[2],&sz);
+    sangue[2] = std::stoi(quant_sangue[4],&sz);
+    sangue[3] = std::stoi(quant_sangue[6],&sz);
 
     if(get_tipo_sanguineo() == "AB")
     {
