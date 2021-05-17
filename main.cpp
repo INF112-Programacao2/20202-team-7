@@ -19,7 +19,7 @@ void Secretaria()
     std::cout << "\t\tDIGITE 3 : Doar sangue" << std::endl;
     std::cout << "\t\tDIGITE 4 : Receber sangue" << std::endl;
     std::cout << "\t\tDIGITE 5 : Informacao dos pacientes agendados" << std::endl;
-    std::cout << "\t\t";
+    std::cout << "\t\tEntrada:";
     std::cin >> ans;
 
   while (ans < 1 || ans > 5)
@@ -147,7 +147,7 @@ void Administracao()
     std::cout << "\t\tDIGITE 2 : Alterar registro de medicos" << std::endl;
     std::cout << "\t\tDIGITE 3 : Informacoes sobre o banco de sangue" << std::endl;
     std::cout << "\t\tDIGITE 4 : Informacoes sobre os doadores/receptores de sangue" << std::endl;
-    std::cout << "\t\t";
+    std::cout << "\t\tEntrada:";
     std::cin >> ans;
     std::cout << std::endl;
 
