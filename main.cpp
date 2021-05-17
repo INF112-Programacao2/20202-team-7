@@ -114,7 +114,7 @@ void Secretaria()
 
             delete receptor;
         }
-        else {
+        else if ( ans == 5){
 
             genero = 'c';
             nome = "default";
@@ -206,7 +206,7 @@ void Administracao()
             banco.QuantidadeTipo();
             banco.QuantidadeTotal();
         }
-        else
+        else if ( ans == 4)
         {
             Banco_de_Sangue banco;
             banco.DadosBancoSangue();

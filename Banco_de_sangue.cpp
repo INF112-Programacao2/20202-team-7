@@ -74,7 +74,8 @@ void Banco_de_Sangue::DadosBancoSangue()
 
         std::cout << "\t\t"<< std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
         rec.ignore();
-    }
+        }
+
     std::cout << std::endl;
     rec.close();
 }
