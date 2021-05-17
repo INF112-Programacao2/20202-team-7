@@ -4,6 +4,11 @@
 #include "Pessoas.h"
 #include<iostream>
 #include<cstring> 
+
+/* 
+Classe responsável
+*/
+
 class Doador_Receptor : public Paciente
 {
 private:

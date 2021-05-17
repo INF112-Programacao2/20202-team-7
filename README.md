@@ -23,7 +23,7 @@ Além disso, também irá auxiliar o setor administrativo do hospital com os dad
 ### Secretária:
 
 - Como secretária de um hospital eu quero saber quais são os horários dos médicos que ali trabalham para saber quando poderei marcar a consulta de meu paciente
-- Como secretária de um hospital eu quero marcar ou cancelar uma consulta para o paciente
+- Como secretária de um hospital eu quero marcar uma consulta para o paciente
 - Como secretária de um hospital eu quero marcar para um paciente poder doar ou receber sangue
 - Como secretária de um hospital eu quero poder consultar os dados de um determinado paciente já cadastrado para poder entrar em informação com ele caso precise
 
