@@ -23,9 +23,9 @@ void Secretaria()
     std::cout << "\t\t";
     std::cin >> ans;
 
-    
-    while (ans < 1 || ans > 5)
+  while (ans < 1 || ans > 6)
     {
+        
         std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
         std::cout << "\t\t";
         std::cin >> ans;
