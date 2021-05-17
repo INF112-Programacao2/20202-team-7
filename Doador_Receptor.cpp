@@ -62,11 +62,12 @@ void Doador_Receptor::Adicionar_sangue(){
 
     int sangue[4];
 
+    std::string::size_type sz;   
     // irá transformar a variável que armazena os valores da quantidade sangue de cada tipo sanguíneo de string para int
     // para dessa forma, poder ser modificada com sangue que está sendo audicionado 
     for (int i = 0; i < 4; i++)
     {
-        sangue[i] = std::stoi(quant_sangue[i]);
+        sangue[i] = std::stoi(quant_sangue[i],&sz);
     }
 
     // vai adicionar o sangue referente ao tipo sanguíneo
@@ -132,11 +133,12 @@ void Doador_Receptor::Retirar_sangue(){
         contador++;
     }
 
+    std::string::size_type sz;
     int sangue[4];
 
     for (int i = 0; i < 4; i++)
     {
-        sangue[i] = std::stoi(quant_sangue[i]);
+        sangue[i] = std::stoi(quant_sangue[i],&sz);
     }
 
     if(get_tipo_sanguineo() == "AB")
