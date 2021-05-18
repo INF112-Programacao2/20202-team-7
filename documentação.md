@@ -218,7 +218,7 @@ void Medico::horario_atendimento(){
 }
 ```
 - Como comentado dentro da funções está explicitado qual é a utlização de cada linha ou conjunto de variavéis.
-- O método ainda tem presente a função mudar horario, na qual acessa o arquivo ````medicos.txt``` e altera essas informções.
+- O método ainda tem presente a função mudar horario, na qual acessa o arquivo ```medicos.txt``` e altera essas informções.
 ```c++
 void Medico::exibirDados(){
     /*Função responsável por exibir os dados adquiridos via abertura do arquivo na função anterior.*/
