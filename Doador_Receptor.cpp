@@ -45,32 +45,28 @@ void Doador_Receptor::Adicionar_sangue(){
         throw "Arquivo inexistente";
     }
 
-    std::vector<std::string> quant_sangue;
+    
     char virgula = ',';
+    int sangue[4];
+    int cont = 0,quant_sangue;
     
     std::string palavra;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
+
+        arquivo_saida>> quant_sangue;
+        arquivo_saida.ignore();
+
         std::getline(arquivo_saida,palavra,virgula);
+
+        sangue[cont] = quant_sangue;
+        cont++;
         
-        quant_sangue.push_back(palavra);
-       
-    }
+   }
 
-    int sangue[4];
-
-    std::string::size_type sz;   
-    // irá transformar a variável que armazena os valores da quantidade sangue de cada tipo sanguíneo de string para int
-    // para dessa forma, poder ser modificada com sangue que está sendo audicionado 
-    
-    sangue[0] = std::stoi(quant_sangue[0],&sz);
-    sangue[1] = std::stoi(quant_sangue[2],&sz);
-    sangue[2] = std::stoi(quant_sangue[4],&sz);
-    sangue[3] = std::stoi(quant_sangue[6],&sz);
-    
-
+  
     // vai adicionar o sangue referente ao tipo sanguíneo
     if(get_tipo_sanguineo() == "AB") sangue[0] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "A") sangue[1] += get_quantidade_de_sangue();
@@ -120,26 +116,26 @@ void Doador_Receptor::Retirar_sangue(){
         throw "Arquivo inexistente";
     }
 
-    std::vector<std::string> quant_sangue;
+    int quant_sangue;
     char virgula = ',';
-    int contador = 0;
+    int cont = 0;
     std::string palavra;
-
-      while (!arquivo_saida.eof())
-    {
-        std::getline(arquivo_saida,palavra,virgula);
-        
-        quant_sangue.push_back(palavra);
-       
-    }
-
-    std::string::size_type sz;
     int sangue[4];
 
-    sangue[0] = std::stoi(quant_sangue[0],&sz);
-    sangue[1] = std::stoi(quant_sangue[2],&sz);
-    sangue[2] = std::stoi(quant_sangue[4],&sz);
-    sangue[3] = std::stoi(quant_sangue[6],&sz);
+    while (!arquivo_saida.eof())
+    {
+
+        arquivo_saida>> quant_sangue;
+        arquivo_saida.ignore();
+
+        std::getline(arquivo_saida,palavra,virgula);
+
+        sangue[cont] = quant_sangue;
+        cont++;
+        
+   }
+
+ 
 
     if(get_tipo_sanguineo() == "AB")
     {
