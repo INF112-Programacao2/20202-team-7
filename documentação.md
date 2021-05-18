@@ -181,6 +181,120 @@ class Medico: public Pessoas{
 };
 ```
 - Como bem comentado, as funções estão bem definidas dentro do ```.h```, onde os atributos private só podem ser utilizados na classe ```Medicos.cpp```. E em public estão as funções que serão utilizadas no arquivo ```Medico.cpp``
+- Abaixo estão os métodos utilizados para as funções, por primeiro temos o horario de atendimento, função utilizada para delimitar o horario de entrada e saida do hospital.
+```c++
+/*Função que receberá o horario de saida do Médico.*/
+void Medico::horario_atendimento(){
+
+    std::ifstream hor; /* Arquivo do qual sera retirado os horarios de atendimento da equipe médica.*/
+    std::string nome, especializacao;
+    int hora_entrada, hora_saida;
+
+    hor.open("horario.txt"); /*Abertura do arquivo.*/
+
+    if(!hor.is_open()){
+        throw "Arquivo inexistente.";  /*Tratamento de exceção caso não ocorra a abertura correta do arquivo.*/
+    }
+
+    std::cout << "\t\t" << std::right << "NOME:" << std::setw(30) << "ESPECIALIZACAO:" << std::setw(17) << "HORARIOS:" << std::endl;
+    while(!hor.eof()){
+
+        std::getline(hor, nome, ',');
+
+        std::getline(hor, especializacao, ',');
+
+        hor >> hora_entrada;
+        hor.ignore();
+
+        hor >> hora_saida;
+        hor.ignore();
+        /*leitura dos referidos dados do médico, tais quais nome, especialização, horario entrada e saida.*/
+
+    std::cout << "\t\t" << std::left << std::setw(20) << nome <<std::setw(23) << especializacao << std::left << hora_entrada << "-" << hora_saida << std::endl;
+    hor.ignore();
+
+    }   
+    hor.close(); /*Fechamento do arquivo.*/
+}
+```
+- Como comentado dentro da funções está explicitado qual é a utlização de cada linha ou conjunto de variavéis.
+- O método ainda tem presente a função mudar horario, na qual acessa o arquivo ````medicos.txt``` e altera essas informções.
+```c++
+void Medico::exibirDados(){
+    /*Função responsável por exibir os dados adquiridos via abertura do arquivo na função anterior.*/
+    
+    std::ifstream med;
+    std::string genero, nome, cpf, tel, crm, especializacao;
+    int hora_entrada, hora_saida;
+
+    med.open("medicos.txt");
+
+    if(!med.is_open()){
+        throw "Arquivo inexistente."; /*Tratamento de exceção caso não ocorra a abertura correta do arquivo.*/
+    }
+
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(7) << "NOME:" << std::setw(24) << "TELEFONE:" << std::setw(7) << "CRM:" << std::setw(12) << "CPF:" << std::setw(29) << "ESPECIALIZACAO:" << std::setw(13) << "HORARIOS:" << std::endl;
+    while(!med.eof()){
+
+        std::getline(med, genero, ',');
+
+        std::getline(med, nome, ',');
+
+        std::getline(med, crm, ',');
+
+        std::getline(med, cpf, ',');
+
+        std::getline(med, tel, ',');
+
+        std::getline(med, especializacao, ',');
+
+        med >> hora_entrada;
+        med.ignore();
+
+        med >> hora_saida;
+        med.ignore();
+
+    
+    std::cout << "\t\t" << std::left << std::setw(7) << genero << std::setw(20) << nome <<std::setw(12) << cpf << std::setw(12) << tel << std::setw(18) << crm << std::setw(19) << especializacao << hora_entrada << "-" << hora_saida << std::endl;
+    /*Impressão dos dados adquiridos mediante metodos pre-estabelecidos.*/
+    med.ignore();
+
+    }
+
+    med.close(); /* Fechamento do arquivo.*/
+}
+```
+- Ainda presente na classe Medicos, temos a mudança de horario e de registro, na qual o horario altera somente o horario e o registro muda mais informações como sexo, CPF, Nome e outros:
+```c++
+void Medico::Mudar_Registro(){
+   /* Função responsável por alterar os registro de um médico, seguindo a respectiva ordem: genero(M ou F), Nome, CPF, CRM, Telefone, Especialização, horarios de entrada e saida.*/
+    std::ofstream med; 
+    
+    med.open("medicos.txt", std::ios::app);    
+
+    if(!med.is_open()){
+       throw "Arquivo inexistente.";
+    }
+
+
+    med << get_genero() << "," << get_nome() << "," << get_cpf() << ", " << get_crm() << "," << get_telefone() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
+    med.close(); /* Fechamento do arquivo.*/
+}
+
+void Medico::Mudar_Horario(){
+   /* Função responsável por alterar os horários dos médicos, seguindo a respectiva ordem: Nome, Especialização, horarios de entrada e saida.*/
+    std::ofstream med_novo; 
+    med_novo.open("horario.txt", std::ios::app);
+
+     if(!med_novo.is_open()){
+       throw "Arquivo inexistente.";
+    }
+
+    med_novo << get_nome() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
+    med_novo.close();/* Fechamento do arquivo.*/
+
+}
+```
 
 ## Banco de Sangue
 - O usuário que for inserir os dados a respeito da inserção de bolsas sanguíneas, deverá preencher dados a respeito do Gênero, Nome, CPF, Convenio, Tipo Sanguíneo e quantidade doada e armazenada na bolsa.
