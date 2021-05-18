@@ -187,7 +187,7 @@ class Medico: public Pessoas{
 void Medico::horario_atendimento(){
 
     std::ifstream hor; /* Arquivo do qual sera retirado os horarios de atendimento da equipe médica.*/
-    std::string nome, especializacao;
+    std::string nome, especializaca o;
     int hora_entrada, hora_saida;
 
     hor.open("horario.txt"); /*Abertura do arquivo.*/
