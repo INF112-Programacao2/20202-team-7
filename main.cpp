@@ -196,8 +196,10 @@ void Administracao()
 
             Medico *med = new Medico(genero, nome, cpf, tel, crm, especializacao, x, y);
             med->Mudar_Registro();
+            med->Mudar_Horario();
 
             delete med;
+          
         }       
         else if (ans == 3)
         {
