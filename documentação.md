@@ -150,7 +150,37 @@ void Paciente::Marcar_Consulta(){
 ## Medicos
 - O metodo Médicos, deverá inserir os seguintes dados: Gênero, Nome, CPF, Telefone, CRM, Especialização e por fim Horários (entrada e saída respectivamente). Como representado pelo construtor:
 ```c++
+Medico::Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int horario_entrada, int horario_saida):
+    Pessoas(genero, nome, cpf, telefone), _crm(crm), _especializacao(especializacao), hora_entrada(horario_entrada), hora_saida(horario_saida){}
+```
+- Esses construtor deriva do arquivo ```Medico.h``` onde lá estão instanciadas as variáveis:
+```c++
+#include "Pessoas.h"
 
+/* Criação da classe Médico, responsavel pelas funções previamente definidas no CRC, tais quais o registro e especificações referentes a equipe médica.
+*/
+class Medico: public Pessoas{
+    private:
+    std::string nome_med;
+    std::string _especializacao;
+    std::string _crm;
+    int hora_entrada, hora_saida;
+    /*Especificação dos atributos referentes unicamente à classe Medico.*/
+    
+    public:
+    Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int hora_entrada, int hora_saida);
+    /*Construtor que receberá dados da Classe pessoa e também da classe Médico.*/
+    void horario_atendimento();
+    virtual void exibirDados() override;
+    void Mudar_Registro();
+    std::string getnome_med() const; /* Função responsável por receber o nome do Médico.*/
+    std::string get_especializacao();  /* Função responsável por receber a especializacao do Médico.*/
+    std::string get_crm() const;/* Função responsável por receber o CRM (numero de inscrição no Conselho Regional de Medicina) do Médico.*/
+    int get_horarioentrada(); /* Função responsável por receber o horario de entrada do Médico no hospital.*/
+    int get_horariosaida(); /* Função responsável por receber o horario de saida do Médico no hospital.*/
+};
+```
+- Como bem comentado, as funções estão bem definidas dentro do ```.h```, onde os atributos private só podem ser utilizados na classe ```Medicos.cpp```. E em public estão as funções que serão utilizadas no arquivo ```Medico.cpp``
 
 ## Banco de Sangue
 - O usuário que for inserir os dados a respeito da inserção de bolsas sanguíneas, deverá preencher dados a respeito do Gênero, Nome, CPF, Convenio, Tipo Sanguíneo e quantidade doada e armazenada na bolsa.
