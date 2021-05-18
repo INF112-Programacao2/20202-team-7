@@ -14,7 +14,7 @@
 Pessoas::Pessoas(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone):
     _genero (genero), _nome(nome), _cpf (cpf), _telefone(telefone) {}
 ``` 
-- Essa classe será utilizada em todas dependencias dos arquivos, pois ela é a classe hieraquica maior.
+- Essa classe será utilizada em todas dependencias dos arquivos (classes) ´.cpp`, pois ela é a classe hieraquica maior.
 - O construtor acima é responsavel por instanciar todas as váriaveis. Como pode ser observado no .h abaixo:
 ```c++
 class Pessoas{
@@ -56,7 +56,7 @@ char Pessoas::get_genero() const{
 - Essas funções são responsáveis por apontar para qual variavel devemos armazenar essas informações. Por isso do atributo get. 
 
 ## Pacientes/Consultas
-- Nesta classe o usuário devera inserir os dados do paciente, como: Nome, CPF, Gênero, Telefone, Convênio.
+- Nesta classe o usuário devera inserir os dados do paciente, como: Nome, CPF, Gênero, Telefone, Convênio:
 ```c++
 Paciente::Paciente(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, std::string planosaude):
     Pessoas(genero, nome, cpf, telefone),_planosaude(planosaude){}
@@ -66,9 +66,69 @@ std::string Paciente::get_planosaude(){
     return this->_planosaude; //armazena o plano de saude dentro da váriavel global
 }
 ```
-- Pode-se perceber que abaixo do chamado da classe paciente, temos chamado também a Classe Pessoas, na qual estarão todas as informações salvas a respeito do paciente.
+- Pode-se perceber que abaixo do chamado da classe Paciente, temos chamado também a classe Pessoas, na qual estarão todas as informações salvas a respeito do paciente.
+- Esse construtor deriva das variaveis do arquivo .h, que está representado abaixo:
+```c++
+#include "Pessoas.h"
 
+/* Criação da classe Paciente, responsavel pelas funções previamente definidas no CRC, tais quais o marcação de consulta, verificação de plano e regisstro do paciênte.
+*/
 
+class Paciente : public Pessoas
+{
+private:
+    std::string _planosaude;
+    /*Especificação dos atributos referentes unicamente à classe Paciente.*/
+
+public:
+
+     /*Construtor que receberá dados da Classe pessoa e também da classe Paciente.*/
+    Paciente(const char &genero, const std::string &_nome, const std::string &cpf, const std::string telefone, std::string planosaude);
+    
+    void exibirDados(); // exibirá os dados referente ao paciente escolhido
+    void Marcar_Consulta(); // responsável por agendar a consulta de acordo com o horairo.
+    void Cancelar_Consulta(); // responsavel por desmarcar a consulta.
+    std::string get_planosaude();  //responsavel somente por armazanar o plano de saude.
+   
+};
+```
+- Como visto acima há o chamamento da biblioteca ```Pessoas.h```, pois nela sera armazenada essas informações, como nome, cpf, telefone e outros.
+- A função abaixo é responsável por exibir os dados salvos até então presentes no arquivo ```paciente.txt```, como está comentado. 
+- Enquanto não houver o fim do arquivo o codigo abaixo não parará de executar, onde pode ser visto em ```while(!pac.eof()) ``` 
+```c++
+void Paciente::exibirDados(){
+    
+    std::ifstream pac;   //ponteiro para abertura e leitura de arquivo.
+    std::string genero, nome, cpf, tel, pl_saude; //strings utilizadas para armazenar as informações na memoria volatil. 
+    pac.open("paciente.txt");  //abertura do arquivo.
+
+    if(!pac.is_open()){
+        throw "Arquivo inexistente.";   //caso o arquivo não exista retorna essa mensagem.
+    }
+
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(7) << "NOME:" << std::setw(19) << "CPF:" << std::setw(20) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::endl; //inserção das informações
+    while(!pac.eof()){
+
+        std::getline(pac, genero, ',');  
+
+        std::getline(pac, nome, ',');
+
+        std::getline(pac, cpf, ',');
+
+        std::getline(pac, tel, ',');
+
+        std::getline(pac, pl_saude, ',');
+        //transfere as informações do arquivo para as strings. 
+
+    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::endl;
+    pac.ignore(); //retorna as informações solicitadas.
+    
+    }
+
+    pac.close(); //fecha o arquivo
+
+}
+```
 - No próximo passo o usuário deverá preencher o horario e especialização a qual deseja.
 - Caso deseja desmarcar uma consulta, esta deverá preencher novamente os dados do paciente, juntamente com os dados do médico.
 
