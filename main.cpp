@@ -26,7 +26,7 @@ void Secretaria()
     {
         
         std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
-        std::cout << "\t\t";
+        std::cout << "\t\tEntrada:";
         std::cin >> ans;
     }
     
@@ -154,7 +154,7 @@ void Administracao()
     while (ans < 1 || ans > 4)
     {
         std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
-        std::cout << "\t\t";
+        std::cout << "\t\tEntrada:";
         std::cin >> ans;
     }
 
@@ -243,7 +243,7 @@ int main()
     std::cout << "\t\tDIGITE 1 : Ir para secao Secretaria" << std::endl;
     std::cout << "\t\tDIGITE 2 : Ir para a secao Administracao" << std::endl;
     std::cout << "\t\tDIGITE 3 : Sair" << std::endl;
-    std::cout << "\t\t";
+    std::cout << "\t\tEntrada:";
     std::cin >> ans;
     std::cout << std::endl;
 
