@@ -148,7 +148,9 @@ void Paciente::Marcar_Consulta(){
 ```
 
 ## Medicos
-- O usuário responsavel pela administração do Hospital, deverá inserir os seguintes dados: Gênero, Nome, CPF, Telefone, CRM, Especialização e por fim Horários (entrada e saída respectivamente). 
+- O metodo Médicos, deverá inserir os seguintes dados: Gênero, Nome, CPF, Telefone, CRM, Especialização e por fim Horários (entrada e saída respectivamente). Como representado pelo construtor:
+```c++
+
 
 ## Banco de Sangue
 - O usuário que for inserir os dados a respeito da inserção de bolsas sanguíneas, deverá preencher dados a respeito do Gênero, Nome, CPF, Convenio, Tipo Sanguíneo e quantidade doada e armazenada na bolsa.
