@@ -31,7 +31,7 @@ int Medico::get_horariosaida(){
 /*Função que receberá o horario de saida do Médico.*/
 void Medico::horario_atendimento(){
 
-    std::ifstream hor; /* Horario do qual sera retirado os horarios de atendimento da equipe médica.*/
+    std::ifstream hor; /* Arquivo do qual sera retirado os horarios de atendimento da equipe médica.*/
     std::string nome, especializacao;
     int hora_entrada, hora_saida;
 
@@ -59,7 +59,7 @@ void Medico::horario_atendimento(){
     hor.ignore();
 
     }   
-    hor.close();
+    hor.close(); /*Fechamento do arquivo.*/
 }
 
 void Medico::exibirDados(){
@@ -103,7 +103,7 @@ void Medico::exibirDados(){
 
     }
 
-    med.close();
+    med.close(); /* Fechamento do arquivo.*/
 }
 
 void Medico::Mudar_Registro(){
@@ -117,6 +117,6 @@ void Medico::Mudar_Registro(){
     }
 
     med << get_genero() << "," << get_nome() << "," << get_cpf() << ", " << get_crm() << "," << get_telefone() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
-    med.close();
+    med.close(); /* Fechamento do arquivo.*/
 
 }
