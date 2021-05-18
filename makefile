@@ -1,7 +1,11 @@
 all: make
+	./Executar
 
-make: Paciente.o Doador_Receptor.o Banco_de_sangue.o Medico.o Pessoas.o
-	g++ Paciente.o Doador_Receptor.o Banco_de_sangue.o Medico.o Pessoas.o
+make: main.o Paciente.o Doador_Receptor.o Banco_de_sangue.o Medico.o Pessoas.o
+	g++ main.o Paciente.o Doador_Receptor.o Banco_de_sangue.o Medico.o Pessoas.o -o Executar
+	
+main.o: main.cpp
+	g++ -c main.cpp
 
 Paciente.o: Paciente.cpp Paciente.h
 	g++ -c Paciente.cpp
@@ -17,5 +21,6 @@ Medico.o: Medico.cpp Medico.h
 
 Pessoas.o: Pessoas.cpp Pessoas.h
 	g++ -c Pessoas.cpp
+
 clean:
 	rm -rf *o make
