@@ -67,14 +67,6 @@ void Doador_Receptor::Adicionar_sangue(){
    }
 
   
-
- 
-    // irá transformar a variável que armazena os valores da quantidade sangue de cada tipo sanguíneo de string para int
-    // para dessa forma, poder ser modificada com sangue que está sendo audicionado 
-    
-   
-    
-
     // vai adicionar o sangue referente ao tipo sanguíneo
     if(get_tipo_sanguineo() == "AB") sangue[0] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "A") sangue[1] += get_quantidade_de_sangue();
