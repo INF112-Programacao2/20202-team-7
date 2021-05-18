@@ -180,7 +180,7 @@ class Medico: public Pessoas{
     int get_horariosaida(); /* Função responsável por receber o horario de saida do Médico no hospital.*/
 };
 ```
-- Como bem comentado, as funções estão bem definidas dentro do ```.h```, onde os atributos private só podem ser utilizados na classe ```Medicos.cpp```. E em public estão as funções que serão utilizadas no arquivo ```Medico.cpp``
+- Como bem comentado, as funções estão bem definidas dentro do ```.h```, onde os atributos private só podem ser utilizados na classe ```Medicos.cpp```. E em public estão as funções que serão utilizadas no arquivo ```Medico.cpp```
 - Abaixo estão os métodos utilizados para as funções, por primeiro temos o horario de atendimento, função utilizada para delimitar o horario de entrada e saida do hospital.
 ```c++
 /*Função que receberá o horario de saida do Médico.*/
