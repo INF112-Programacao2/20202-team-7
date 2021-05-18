@@ -183,11 +183,11 @@ void Administracao()
             std::cin.ignore();
             std::cout << "\t\tNome: ";
             std::getline(std::cin, nome);
-            std::cout << "\t\tTelefone: ";
+            std::cout << "\t\tCPF: ";
             std::cin >> cpf;
             std::cout << "\t\tCRM: ";
             std::cin >> tel;
-            std::cout << "\t\tCPF: ";
+            std::cout << "\t\tTelefone: ";
             std::cin >> crm;
             std::cout << "\t\tEspecializacao: ";
             std::cin >> especializacao;

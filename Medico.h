@@ -16,6 +16,7 @@ class Medico: public Pessoas{
     
     public:
     Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int hora_entrada, int hora_saida);
+    Medico(const std::string &nome, std::string especializacao, int hora_entrada, int hora_saida);
     /*Construtor que receberá dados da Classe pessoa e também da classe Médico.*/
     void horario_atendimento();
     virtual void exibirDados() override;
