@@ -46,22 +46,17 @@ void Doador_Receptor::Adicionar_sangue(){
     }
 
     
-    char virgula = ',';
     int sangue[4];
-    int cont = 0,quant_sangue;
-    
+    int cont = 0;
+    std::string::size_type sz;
     std::string palavra;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
+        std::getline(arquivo_saida,palavra);
 
-        arquivo_saida>> quant_sangue;
-        arquivo_saida.ignore();
-
-        std::getline(arquivo_saida,palavra,virgula);
-
-        sangue[cont] = quant_sangue;
+        sangue[cont] = std::stoi(palavra,&sz,10);
         cont++;
         
    }
@@ -96,17 +91,27 @@ void Doador_Receptor::Adicionar_sangue(){
     gravar_informacoes.close();
     arquivo_saida.close();
     arquivo_receptor.close();
-}    
+} 
+
+/*
+    Essa função irá fazer a modificação nos arquivos referentes a quantidade de cada tipo de sangue e de registro de receptores
+    Irá pegar a quantidade de sangue que tem já registrado de cada tipo sanguíneo e irá retirar, se for possível,
+    sangue no tipo sanguíneo  referente ao do receptor, e também, irá fazer registro dos dados desse receptor
+
+*/
+
 
 void Doador_Receptor::Retirar_sangue(){
     
+    // arquivo que irá pegar os valores de cada tipo de sangue
     std::ifstream arquivo_saida;
+    // arquivo que irá registrar os novos valores de cada tipo de sangue
     std::ofstream arquivo_receptor;
 
     arquivo_saida.open("tipagem.txt");
     arquivo_receptor.open("tipagem.txt");
 
-
+    // tratamento de exceção pra caso o arquivo não abra
     if (!arquivo_saida.is_open())
     {
         throw "Arquivo inexistente";
@@ -115,30 +120,28 @@ void Doador_Receptor::Retirar_sangue(){
     {
         throw "Arquivo inexistente";
     }
-
-    int quant_sangue;
-    char virgula = ',';
-    int cont = 0;
-    std::string palavra;
+    
     int sangue[4];
+    int cont = 0;
+    std::string::size_type sz;
+    std::string palavra;
 
+    // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
+        std::getline(arquivo_saida,palavra);
 
-        arquivo_saida>> quant_sangue;
-        arquivo_saida.ignore();
-
-        std::getline(arquivo_saida,palavra,virgula);
-
-        sangue[cont] = quant_sangue;
+        sangue[cont] = std::stoi(palavra,&sz,10);
         cont++;
         
    }
 
  
-
+    // descobrir qual o tipo sanguíneo do receptor para modifcar no arquivo
     if(get_tipo_sanguineo() == "AB")
-    {
+    {   
+        // tratamento de exceção para caso a subtração do que há no banco de sangue e oque se quer retirar
+        // for negativo (Não há como ter valor negativo nesse caso)
         if( (sangue[0] - get_quantidade_de_sangue()) < 0 ){
             throw "Impossivel retirar sangue. Valor requisitado acima do que contem no Bando de Sangue ";
         }else{
@@ -170,12 +173,14 @@ void Doador_Receptor::Retirar_sangue(){
         }
     } 
    
-
+    // registrando os valores antigos e oque foi modificado novamente no arquivo
     arquivo_receptor << sangue[0] <<",AB,"<<std::endl;
     arquivo_receptor << sangue [1] <<",A,"<<std::endl;
     arquivo_receptor << sangue[2] <<",B,"<<std::endl;
     arquivo_receptor << sangue[3] <<",O,"<<std::endl;    
  
+
+    // gravar as informações do receptor de sangue
     std::ofstream gravar_informacoes;
 
     gravar_informacoes.open("doadores.txt",std::ios::app);
@@ -187,6 +192,7 @@ void Doador_Receptor::Retirar_sangue(){
 
     gravar_informacoes <<"\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," << std::endl;
     
+    //fechamento dos arquivos 
     gravar_informacoes.close();
     arquivo_saida.close();
     arquivo_receptor.close();
