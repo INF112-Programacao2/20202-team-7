@@ -9,7 +9,7 @@ Paciente.o: Paciente.cpp Paciente.h
 Doador_Receptor.o: Doador_Receptor.cpp Doador_Receptor.h
 	g++ -c Doador_Receptor.cpp
 
-Banco_de_sangue.o: Banco_de_Sangue.cpp Banco_de_sangue.h
+Banco_de_sangue.o: Banco_de_sangue.cpp Banco_de_Sangue.h
 	g++ -c Banco_de_sangue.cpp
 
 Medico.o: Medico.cpp Medico.h
