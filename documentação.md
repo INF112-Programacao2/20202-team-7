@@ -129,8 +129,23 @@ void Paciente::exibirDados(){
 
 }
 ```
-- No próximo passo o usuário deverá preencher o horario e especialização a qual deseja.
-- Caso deseja desmarcar uma consulta, esta deverá preencher novamente os dados do paciente, juntamente com os dados do médico.
+- No próximo método da classe tem a função de preencher o horario e especialização a qual deseja: 
+```c++
+void Paciente::Marcar_Consulta(){
+    
+    std::ofstream pac; //abertura e escrita do arquvio.
+    
+    pac.open("paciente.txt", std::ios::app);    //abrindo o arquivo na ultima posição para poder continuar a escrita e não apagar ele por completo.
+    
+    if(!pac.is_open()){
+       throw "Arquivo inexistente."; //caso o arquivo não existe
+    }
+   
+    pac << get_genero() << "," << get_nome() << "," << get_cpf()  << "," << get_telefone() << "," << get_planosaude() << "," << std::endl;  //inserção de informações no arquivo.
+   
+    pac.close(); //fecha o arquivo e salva
+}
+```
 
 ## Medicos
 - O usuário responsavel pela administração do Hospital, deverá inserir os seguintes dados: Gênero, Nome, CPF, Telefone, CRM, Especialização e por fim Horários (entrada e saída respectivamente). 
