@@ -26,7 +26,7 @@ void Secretaria()
     {
         
         std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
-        std::cout << "\t\t";
+        std::cout << "\t\tEntrada:";
         std::cin >> ans;
     }
     
@@ -154,7 +154,7 @@ void Administracao()
     while (ans < 1 || ans > 4)
     {
         std::cout << "\t\tEntrada invalida. Digite novamente..." << std::endl;
-        std::cout << "\t\t";
+        std::cout << "\t\tEntrada:";
         std::cin >> ans;
     }
 
@@ -183,11 +183,11 @@ void Administracao()
             std::cin.ignore();
             std::cout << "\t\tNome: ";
             std::getline(std::cin, nome);
-            std::cout << "\t\tTelefone: ";
+            std::cout << "\t\tCPF: ";
             std::cin >> cpf;
             std::cout << "\t\tCRM: ";
             std::cin >> tel;
-            std::cout << "\t\tCPF: ";
+            std::cout << "\t\tTelefone: ";
             std::cin >> crm;
             std::cout << "\t\tEspecializacao: ";
             std::cin >> especializacao;
@@ -196,8 +196,10 @@ void Administracao()
 
             Medico *med = new Medico(genero, nome, cpf, tel, crm, especializacao, x, y);
             med->Mudar_Registro();
+            med->Mudar_Horario();
 
             delete med;
+          
         }       
         else if (ans == 3)
         {
@@ -243,7 +245,7 @@ int main()
     std::cout << "\t\tDIGITE 1 : Ir para secao Secretaria" << std::endl;
     std::cout << "\t\tDIGITE 2 : Ir para a secao Administracao" << std::endl;
     std::cout << "\t\tDIGITE 3 : Sair" << std::endl;
-    std::cout << "\t\t";
+    std::cout << "\t\tEntrada:";
     std::cin >> ans;
     std::cout << std::endl;
 

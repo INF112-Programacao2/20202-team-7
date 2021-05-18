@@ -20,6 +20,7 @@ class Medico: public Pessoas{
     void horario_atendimento();
     virtual void exibirDados() override;
     void Mudar_Registro();
+    void Mudar_Horario();
     std::string getnome_med() const; /* Função responsável por receber o nome do Médico.*/
     std::string get_especializacao();  /* Função responsável por receber a especializacao do Médico.*/
     std::string get_crm() const;/* Função responsável por receber o CRM (numero de inscrição no Conselho Regional de Medicina) do Médico.*/

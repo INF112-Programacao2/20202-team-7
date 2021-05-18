@@ -111,12 +111,26 @@ void Medico::Mudar_Registro(){
     std::ofstream med; 
     
     med.open("medicos.txt", std::ios::app);    
-    
+
     if(!med.is_open()){
        throw "Arquivo inexistente.";
     }
 
+
     med << get_genero() << "," << get_nome() << "," << get_cpf() << ", " << get_crm() << "," << get_telefone() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
     med.close(); /* Fechamento do arquivo.*/
+}
+
+void Medico::Mudar_Horario(){
+   /* Função responsável por alterar os horários dos médicos, seguindo a respectiva ordem: Nome, Especialização, horarios de entrada e saida.*/
+    std::ofstream med_novo; 
+    med_novo.open("horario.txt", std::ios::app);
+
+     if(!med_novo.is_open()){
+       throw "Arquivo inexistente.";
+    }
+
+    med_novo << get_nome() << "," << get_especializacao() << "," << get_horarioentrada() << "," << get_horariosaida() << "," << std::endl;
+    med_novo.close();/* Fechamento do arquivo.*/
 
 }
