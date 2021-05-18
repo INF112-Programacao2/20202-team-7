@@ -19,6 +19,7 @@ void Banco_de_Sangue::DadosBancoSangue()
     if (!doa.is_open())
     {
         throw "Arquivo inexistente.";
+
     }
     std::cout << "\t\t" << std::right << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 

@@ -38,10 +38,11 @@ void Paciente::exibirDados(){
         std::getline(pac, tel, ',');
 
         std::getline(pac, pl_saude, ',');
-
+        
 
     std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::endl;
     pac.ignore();
+    
     }
 
     pac.close();
