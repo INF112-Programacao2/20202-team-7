@@ -64,20 +64,6 @@ void Paciente::Marcar_Consulta(){
     pac.close(); //fecha o arquivo e salva
 }
 
-void Paciente::Cancelar_Consulta(){
-
-    std::string temp;
-    std::ifstream pac;
-    pac.open("paciente.txt", std::fstream::in);
-
-    std::stringstream sstr;
-    std::cin.ignore();
-
-  
-    pac.close();
-
-}
-
 
 
 
