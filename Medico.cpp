@@ -59,6 +59,7 @@ void Medico::horario_atendimento(){
     hor.ignore();
 
     }   
+    std::cout << std::endl;
     hor.close(); /*Fechamento do arquivo.*/
 }
 
@@ -102,7 +103,7 @@ void Medico::exibirDados(){
     med.ignore();
 
     }
-
+    std::cout << std::endl;
     med.close(); /* Fechamento do arquivo.*/
 }
 

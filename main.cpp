@@ -9,7 +9,7 @@
 void Secretaria()
 {
 
-    char genero;
+    char genero, r;
     std::string nome, cpf, tel, pl_saude, tipo_sangue, crm, especilizacao;
     int ans, qtd_sangue, horario_entrada, horario_saida;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
@@ -45,6 +45,7 @@ void Secretaria()
             med->horario_atendimento();
 
             delete med;
+
         }
         if(ans == 2){
             
@@ -63,8 +64,8 @@ void Secretaria()
 
             Paciente *_paciente = new Paciente(genero, nome, cpf, tel, pl_saude);
             _paciente->Marcar_Consulta();
-
             delete _paciente;
+
         }
         else if(ans == 3){
 
@@ -89,6 +90,7 @@ void Secretaria()
             doador->Adicionar_sangue();
 
             delete doador;
+
         }
         else if(ans == 4){
 
@@ -113,6 +115,7 @@ void Secretaria()
             receptor->Retirar_sangue();
 
             delete receptor;
+
         }
         else if ( ans == 5){
 
@@ -125,19 +128,19 @@ void Secretaria()
             Paciente *pac = new Paciente(genero, nome, cpf, tel, pl_saude);
             pac->exibirDados();
 
-            delete pac;       
+            delete pac;  
+    
         }
     }
     catch(const char *e){
         std::cout << "erro: " << e << std::endl;
+        }
     }
-
-}
 
 void Administracao()
 {
 
-    char genero, t;
+    char genero, t, r;
     std::string nome, cpf, tel, crm, especializacao;
     int x, y;
     int ans;
@@ -174,6 +177,7 @@ void Administracao()
             med->exibirDados();
 
             delete med;
+    
         }
         else if(ans == 2){
 
@@ -207,17 +211,20 @@ void Administracao()
             Banco_de_Sangue banco;
             banco.QuantidadeTipo();
             banco.QuantidadeTotal();
+            
         }
         else if ( ans == 4)
         {
             Banco_de_Sangue banco;
             banco.DadosBancoSangue();
+
         }
     }
     catch (const char *e){
         std::cout << "erro: " << e << std::endl;
+        }
     }
-}
+
 bool Senha(std::string *_senha)
 {
     std::string senha;
@@ -235,6 +242,9 @@ bool Senha(std::string *_senha)
 
 int main()
 {
+
+    char r;
+    while(r != 's'){
 
     int ans;
     std::string senha;
@@ -259,12 +269,15 @@ int main()
     if (ans == 1)
     {
         Secretaria();
+        std::cout<<"\t\tSair? (s/n)" << std::endl;
+        std::cout << "\t\tEntrada:";
+        std::cin >> r;
     }
     else if (ans == 2)
     {
 
         std::cout << "\t\tDigite a senha:" << std::endl;
-        std::cout << "\t\t";
+        std::cout << "\t\tEntrada:";
         std::cin >> senha;
 
         if (Senha(&senha) == true)
@@ -274,18 +287,23 @@ int main()
             Administracao();
         }
         else
-        {
-
-            std::cout << "\t\tAcesso negado" << std::endl;
-            exit(1);
+        {   
+            while(Senha(&senha) != true){
+                std::cout << "\t\tAcesso negado. Digite novamente..." << std::endl;
+                std::cout << "\t\tEntrada:";
+                std::cin >> senha;
+            }
+            Administracao();
+     
         }
+        std::cout<<"\t\tSair? (s/n)" << std::endl;
+        std::cout << "\t\tEntrada:";
+        std::cin >> r;
     }
     else
     {
         exit(1);
     }
-
-    
-
+}
     return 0;
 }
