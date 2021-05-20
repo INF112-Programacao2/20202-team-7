@@ -466,7 +466,10 @@ void Doador_Receptor::Adicionar_sangue(){
     sangue no tipo sanguíneo  referente ao do receptor, e também, irá fazer registro dos dados desse receptor
 
 */
+```
+- A função acima tem como objetivo somar a quantidade de sangue disponível, conforme for carregando dados nela.
 
+```c++
 
 void Doador_Receptor::Retirar_sangue(){
     
@@ -566,3 +569,5 @@ void Doador_Receptor::Retirar_sangue(){
 
 } 
 ```
+- A função acima propõe o oposto da ```Adicionar_Sangue```, na qual ela retira a quantidade de sangue do estoque, dependendo da necessidade do hospital.
+
