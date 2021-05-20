@@ -44,7 +44,7 @@ void Paciente::exibirDados(){
     pac.ignore(); //retorna as informações solicitadas.
     
     }
-
+    std::cout << std::endl;
     pac.close(); //fecha o arquivo
 
 }
