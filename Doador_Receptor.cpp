@@ -38,18 +38,24 @@ void Doador_Receptor::Adicionar_sangue(){
     
     
     int sangue[4];
-    int cont = 0;
+    
     std::string::size_type sz;
     std::string palavra;
+    std::vector<std::string>texto;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra);
 
-        sangue[cont] = std::stoi(palavra,&sz,10);
-        cont++;
+        texto.push_back(palavra);
         
+   }
+
+   for (int i = 0; i < 4; i++){
+
+    sangue[i] = stoi(texto[i],&sz,10);
+  
    }
 
   
@@ -132,19 +138,25 @@ void Doador_Receptor::Retirar_sangue(){
   
     
     int sangue[4];
-    int cont = 0;
+  
     std::string::size_type sz;
     std::string palavra;
+    std::vector<std::string>texto;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra);
 
-        sangue[cont] = std::stoi(palavra,&sz,10);
-        cont++;
+        texto.push_back(palavra);
         
-   }
+    }
+
+    for (int i = 0; i < 4; i++){
+
+        sangue[i] = stoi(texto[i],&sz,10);
+  
+    }
 
  
     // descobrir qual o tipo sanguíneo do receptor para modifcar no arquivo
@@ -206,7 +218,7 @@ void Doador_Receptor::Retirar_sangue(){
 
     //fechando arquivo
     arquivo_receptor.close();
-    
+
 
     // gravar as informações do receptor de sangue
     std::ofstream gravar_informacoes;
