@@ -12,6 +12,7 @@ void Secretaria()
     char genero, r;
     std::string nome, cpf, tel, pl_saude, tipo_sangue, crm, especilizacao;
     int ans, qtd_sangue, horario_entrada, horario_saida;
+    bool sangue;
     std::cout << std::setw(30) << "\t\t---------------------------------------------------" << std::endl;
 
     std::cout << "\t\tDIGITE 1 : Horario de atendimento dos medicos" << std::endl;
@@ -83,13 +84,14 @@ void Secretaria()
             std::cin >> pl_saude;
             std::cout << "\t\tTipo sanguineo: ";
             std::cin >> tipo_sangue;
-            
-            while(tipo_sangue != "AB" || tipo_sangue != "A" || tipo_sangue != "B" || tipo_sangue != "O"){
+        
+            while(tipo_sangue != "AB" && tipo_sangue != "A" && tipo_sangue != "B" && tipo_sangue != "O"){
                 std::cout << "Tipo sanguineo invalido. Digite novamente..." << std::endl;
                 std::cin >> tipo_sangue;
+              
             }
-            
-            std::cout << "\t\tQuantidade de sangue doada: ";
+
+            std::cout << "\t\tQuantidade de sangue doada (valores entre 420mL e 470mL): ";
             std::cin >> qtd_sangue; 
 
             Doador_Receptor *doador = new Doador_Receptor(genero, nome, cpf, tel, pl_saude, tipo_sangue, qtd_sangue);
