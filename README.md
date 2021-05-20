@@ -13,6 +13,14 @@ O sistema será focado em auxiliar a secretária de um hospital, marcando/cancel
 
 Além disso, também irá auxiliar o setor administrativo do hospital com os dados dos médicos que ali trabalham, com o manejo dos médicos, com os dados do banco de sangue e dos pacientes que doaram ou receberam sangue.
 
+## Execução Do Programa
+
+Para facilitar a execução do programa, utilizaremos do makefile para executar
+
+### MakeFile
+- A utilização do makefile tem como objetivo automatizar a execução. Na necessidade de evitar a digitação de vários parametros na hora da execução.
+- Desta forma o usuário só necessita utilizar o nome make, na hora de executar que este iniciará a execução.
+
 ## Usuários:
 
 - Secretária do Hospital
