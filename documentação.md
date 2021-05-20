@@ -395,37 +395,34 @@ void Doador_Receptor::Adicionar_sangue(){
     // arquivo que iremos pegar os dados do sangue para ser modificados
     std::ifstream arquivo_saida;
 
-    // arquivo que iremos registrar os dados já modificados do sangue
-    std::ofstream arquivo_receptor;
-
     arquivo_saida.open("tipagem.txt");
-
-    arquivo_receptor.open("tipagem.txt");
 
     // tratamento de exceção caso o arquivo não abra
     if (!arquivo_saida.is_open())
     {
         throw "Arquivo inexistente";
     }
-     if (!arquivo_receptor.is_open())
-    {
-        throw "Arquivo inexistente";
-    }
-
+    
     
     int sangue[4];
-    int cont = 0;
+    
     std::string::size_type sz;
     std::string palavra;
+    std::vector<std::string>texto;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra);
 
-        sangue[cont] = std::stoi(palavra,&sz,10);
-        cont++;
+        texto.push_back(palavra);
         
+   }
+
+   for (int i = 0; i < 4; i++){
+
+    sangue[i] = stoi(texto[i],&sz,10);
+  
    }
 
   
@@ -434,12 +431,36 @@ void Doador_Receptor::Adicionar_sangue(){
     else if(get_tipo_sanguineo() == "A") sangue[1] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "B") sangue[2] += get_quantidade_de_sangue();
     else if(get_tipo_sanguineo() == "O") sangue[3] += get_quantidade_de_sangue();
-   
+
+
+    //fechando arquivo que retira as quantidades sanguíneas
+    arquivo_saida.close();
+
+
+
+
+    // arquivo que iremos registrar os dados já modificados do sangue
+    std::ofstream arquivo_receptor;
+
+    arquivo_receptor.open("tipagem.txt");
+
+
+     if (!arquivo_receptor.is_open())
+    {
+        throw "Arquivo inexistente";
+    }
+
     // vai registrar no arquivo de tipagem os novos valores modificados
     arquivo_receptor << sangue[0] <<",AB,"<<std::endl;
     arquivo_receptor << sangue [1] <<",A,"<<std::endl;
     arquivo_receptor << sangue[2] <<",B,"<<std::endl;
-    arquivo_receptor << sangue[3] <<",O,"<<std::endl;    
+    arquivo_receptor << sangue[3] <<",O,"<<std::endl;   
+
+    //fechando arquivo que recebe as quantidades sanguíneas
+    arquivo_receptor.close(); 
+
+
+
  
     std::ofstream gravar_informacoes;
 
@@ -452,13 +473,18 @@ void Doador_Receptor::Adicionar_sangue(){
     }
     
     // vai gravar as informações referente ao doador no arquivo de doadores
-    gravar_informacoes << "\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," << std::endl;
+    gravar_informacoes << get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," ;
     
-    // fechando todos os arquivos que foram abertos durante a execução do programa
+    // fechando arquivo de informações
     gravar_informacoes.close();
-    arquivo_saida.close();
-    arquivo_receptor.close();
+  
 } 
+
+
+```
+- A função acima tem como objetivo somar a quantidade de sangue disponível, conforme for carregando dados nela.
+
+```c++
 
 /*
     Essa função irá fazer a modificação nos arquivos referentes a quantidade de cada tipo de sangue e de registro de receptores
@@ -466,45 +492,43 @@ void Doador_Receptor::Adicionar_sangue(){
     sangue no tipo sanguíneo  referente ao do receptor, e também, irá fazer registro dos dados desse receptor
 
 */
-```
-- A função acima tem como objetivo somar a quantidade de sangue disponível, conforme for carregando dados nela.
-
-```c++
 
 void Doador_Receptor::Retirar_sangue(){
     
     // arquivo que irá pegar os valores de cada tipo de sangue
     std::ifstream arquivo_saida;
-    // arquivo que irá registrar os novos valores de cada tipo de sangue
-    std::ofstream arquivo_receptor;
+
 
     arquivo_saida.open("tipagem.txt");
-    arquivo_receptor.open("tipagem.txt");
+ 
 
     // tratamento de exceção pra caso o arquivo não abra
     if (!arquivo_saida.is_open())
     {
         throw "Arquivo inexistente";
     }
-     if (!arquivo_receptor.is_open())
-    {
-        throw "Arquivo inexistente";
-    }
+  
     
     int sangue[4];
-    int cont = 0;
+  
     std::string::size_type sz;
     std::string palavra;
+    std::vector<std::string>texto;
 
     // irá ler o arquivo e pegar os números, além de registar esses valores em uma variável
     while (!arquivo_saida.eof())
     {
         std::getline(arquivo_saida,palavra);
 
-        sangue[cont] = std::stoi(palavra,&sz,10);
-        cont++;
+        texto.push_back(palavra);
         
-   }
+    }
+
+    for (int i = 0; i < 4; i++){
+
+        sangue[i] = stoi(texto[i],&sz,10);
+  
+    }
 
  
     // descobrir qual o tipo sanguíneo do receptor para modifcar no arquivo
@@ -542,13 +566,31 @@ void Doador_Receptor::Retirar_sangue(){
             sangue[3] -= get_quantidade_de_sangue();
         }
     } 
+    // fechando arquivo que recebe os valores
+    arquivo_saida.close();
+
+
+    // arquivo que irá registrar os novos valores de cada tipo de sangue
+    std::ofstream arquivo_receptor;
+
+    arquivo_receptor.open("tipagem.txt");
+
+
+    // tratamento de exceção
+    if (!arquivo_receptor.is_open())
+    {
+        throw "Arquivo inexistente";
+    }
    
     // registrando os valores antigos e oque foi modificado novamente no arquivo
     arquivo_receptor << sangue[0] <<",AB,"<<std::endl;
     arquivo_receptor << sangue [1] <<",A,"<<std::endl;
     arquivo_receptor << sangue[2] <<",B,"<<std::endl;
     arquivo_receptor << sangue[3] <<",O,"<<std::endl;    
- 
+
+    //fechando arquivo
+    arquivo_receptor.close();
+
 
     // gravar as informações do receptor de sangue
     std::ofstream gravar_informacoes;
@@ -560,14 +602,15 @@ void Doador_Receptor::Retirar_sangue(){
         throw "Arquivo inexistente";
     }
 
-    gravar_informacoes <<"\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," << std::endl;
+    gravar_informacoes << get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," ;
     
     //fechamento dos arquivos 
     gravar_informacoes.close();
-    arquivo_saida.close();
-    arquivo_receptor.close();
+   
+    
 
-} 
+}
+
 ```
 - A função acima propõe o oposto da ```Adicionar_Sangue```, na qual ela retira a quantidade de sangue do estoque, dependendo da necessidade do hospital.
 
