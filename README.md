@@ -44,4 +44,4 @@ Para facilitar a execução do programa, utilizaremos do makefile para executar
 
 ## CRC:
 
-[view?page=0_0#](https://lucid.app/lucidchart/d2e0a693-ee55-44db-9416-d00b6c2ec840/view?page=0_0#)
+![Figura 1](/Images/CRC.jpeg)
