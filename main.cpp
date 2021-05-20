@@ -83,6 +83,12 @@ void Secretaria()
             std::cin >> pl_saude;
             std::cout << "\t\tTipo sanguineo: ";
             std::cin >> tipo_sangue;
+            
+            while(tipo_sangue != "AB" || tipo_sangue != "A" || tipo_sangue != "B" || tipo_sangue != "O"){
+                std::cout << "Tipo sanguineo invalido. Digite novamente..." << std::endl;
+                std::cin >> tipo_sangue;
+            }
+            
             std::cout << "\t\tQuantidade de sangue doada: ";
             std::cin >> qtd_sangue; 
 
@@ -211,7 +217,7 @@ void Administracao()
             Banco_de_Sangue banco;
             banco.QuantidadeTipo();
             banco.QuantidadeTotal();
-            
+
         }
         else if ( ans == 4)
         {
