@@ -106,7 +106,7 @@ void Doador_Receptor::Adicionar_sangue(){
     }
     
     // vai gravar as informações referente ao doador no arquivo de doadores
-    gravar_informacoes << "\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," ;
+    gravar_informacoes << "\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," << std::endl;
     
     // fechando arquivo de informações
     gravar_informacoes.close();
@@ -230,7 +230,7 @@ void Doador_Receptor::Retirar_sangue(){
         throw "Arquivo inexistente";
     }
 
-    gravar_informacoes <<"\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," ;
+    gravar_informacoes <<"\n"<< get_genero() << "," << get_nome() << ","  << get_cpf() << "," << get_telefone() << "," << get_planosaude() << "," << get_tipo_sanguineo() << "," << get_quantidade_de_sangue() << "," << std::endl;
     
     //fechamento dos arquivos 
     gravar_informacoes.close();
