@@ -120,7 +120,7 @@ void Paciente::exibirDados(){
         std::getline(pac, pl_saude, ',');
         //transfere as informações do arquivo para as strings. 
 
-    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::endl;
+    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(13) << tel << std::setw(12) << pl_saude << std::endl;
     pac.ignore(); //retorna as informações solicitadas.
     
     }
@@ -150,7 +150,7 @@ void Paciente::Marcar_Consulta(){
 ## Medicos
 - O metodo Médicos, deverá inserir os seguintes dados: Gênero, Nome, CPF, Telefone, CRM, Especialização e por fim Horários (entrada e saída respectivamente). Como representado pelo construtor:
 ```c++
-Medico::Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int horario_entrada, int horario_saida):
+Medico::Medico(const char &genero, const std::string &nome, const std::string &cpf, const std::string &crm, std::string telefone, std::string especializacao, int horario_entrada, int horario_saida):
     Pessoas(genero, nome, cpf, telefone), _crm(crm), _especializacao(especializacao), hora_entrada(horario_entrada), hora_saida(horario_saida){}
 ```
 - Esses construtor deriva do arquivo ```Medico.h``` onde lá estão instanciadas as variáveis:
@@ -168,7 +168,7 @@ class Medico: public Pessoas{
     /*Especificação dos atributos referentes unicamente à classe Medico.*/
     
     public:
-    Medico(const char &genero, const std::string &nome, const std::string &cpf, std::string telefone, const std::string &crm, std::string especializacao, int hora_entrada, int hora_saida);
+    Medico(const char &genero, const std::string &nome, const std::string &cpf, const std::string &crm, std::string telefone, std::string especializacao, int hora_entrada, int hora_saida);
     /*Construtor que receberá dados da Classe pessoa e também da classe Médico.*/
     void horario_atendimento();
     virtual void exibirDados() override;
@@ -233,7 +233,7 @@ void Medico::exibirDados(){
         throw "Arquivo inexistente."; /*Tratamento de exceção caso não ocorra a abertura correta do arquivo.*/
     }
 
-    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(7) << "NOME:" << std::setw(24) << "TELEFONE:" << std::setw(7) << "CRM:" << std::setw(12) << "CPF:" << std::setw(29) << "ESPECIALIZACAO:" << std::setw(13) << "HORARIOS:" << std::endl;
+    std::cout << "\t\t" << std::right << "SEXO:" << std::setw(7) << "NOME:" << std::setw(19) << "CPF:" << std::setw(14) << "CRM:" << std::setw(18) << "TELEFONE:" << std::setw(24) << "ESPECIALIZACAO:" << std::setw(13) << "HORARIOS:" << std::endl;
     while(!med.eof()){
 
         std::getline(med, genero, ',');
@@ -255,7 +255,7 @@ void Medico::exibirDados(){
         med.ignore();
 
     
-    std::cout << "\t\t" << std::left << std::setw(7) << genero << std::setw(20) << nome <<std::setw(12) << cpf << std::setw(12) << tel << std::setw(18) << crm << std::setw(19) << especializacao << hora_entrada << "-" << hora_saida << std::endl;
+        std::cout << "\t\t" << std::left << std::setw(7) << genero << std::setw(20) << nome <<std::setw(14) << cpf << std::setw(13) << crm << std::setw(18) << tel << std::setw(19) << especializacao << hora_entrada << "-" << hora_saida << std::endl;
     /*Impressão dos dados adquiridos mediante metodos pre-estabelecidos.*/
     med.ignore();
 
@@ -320,6 +320,7 @@ void Banco_de_Sangue::DadosBancoSangue()
     }
     std::cout << "\t\t" << std::right << "SEXO:" << std::setw(11) << "DOADORES:" << std::setw(15) << "CPF:" << std::setw(17) << "TELEFONE:" << std::setw(12) << "CONVENIO:" << std::setw(8) << "TIPO:" << std::setw(18) << "QUANTIDADE/mL:" << std::endl;
 
+
     // É feita a leitura do arquivo, inicializando cada variável criada com os valores presentes nos arquivos
     while (!doa.eof())
     {
@@ -339,7 +340,8 @@ void Banco_de_Sangue::DadosBancoSangue()
         doa.ignore();
 
         // É feita a impressão dos dados. Utilizou-se os manipuladores std::left e std::setw() para configurar a formatação da saída
-        std::cout << "\t\t" << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(12) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
+        std::cout << "\t\t" << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(13) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
+
         doa.ignore();
     }
     std::cout << std::endl;
@@ -373,7 +375,8 @@ void Banco_de_Sangue::DadosBancoSangue()
         rec >> qtd_recebida;
         rec.ignore();
 
-        std::cout << "\t\t"<< std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
+        std::cout << "\t\t"<< std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(13) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
+
         rec.ignore();
     }
 

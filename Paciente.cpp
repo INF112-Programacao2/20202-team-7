@@ -40,7 +40,7 @@ void Paciente::exibirDados(){
         std::getline(pac, pl_saude, ',');
         //transfere as informações do arquivo para as strings. 
 
-    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(12) << tel << std::setw(12) << pl_saude << std::endl;
+    std::cout << "\t\t" << std::left << std::setw(7) << genero <<std::setw(20) << nome << std::setw(15) << cpf << std::setw(13) << tel << std::setw(12) << pl_saude << std::endl;
     pac.ignore(); //retorna as informações solicitadas.
     
     }

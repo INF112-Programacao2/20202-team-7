@@ -42,7 +42,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         doa.ignore();
 
         // É feita a impressão dos dados. Utilizou-se os manipuladores std::left e std::setw() para configurar a formatação da saída
-        std::cout << "\t\t" << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(12) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
+        std::cout << "\t\t" << std::left << std::setw(7) << sexo_d <<std::setw(20) << nome << std::setw(12) << cpf_d << std::setw(13) << tel_d << std::setw(12) << plsaude_d << std::setw(9) << tipo_doador << qtd_doada << std::endl;
         doa.ignore();
     }
     std::cout << std::endl;
@@ -76,7 +76,7 @@ void Banco_de_Sangue::DadosBancoSangue()
         rec >> qtd_recebida;
         rec.ignore();
 
-        std::cout << "\t\t"<< std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(12) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
+        std::cout << "\t\t"<< std::left << std::setw(7) << sexo_r << std::setw(20) << _nome << std::setw(12) << cpf_r << std::setw(13) << tel_r << std::setw(12) << plsaude_r << std::setw(9) << tipo_recptor << qtd_recebida << std::endl;
         rec.ignore();
     }
 
